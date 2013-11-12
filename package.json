@@ -1,0 +1,25 @@
+{
+  "name": "RouterRouter",
+  "version": "0.1.0",
+  "description": "A very basic JavaScript routing library extracted from Backbone's Router.",
+  "homepage": "https://github.com/jgarber623/RouterRouter",
+  "author": "Jason Garber",
+  "license": "MIT",
+  "keywords": [
+    "router"
+  ],
+  "main": "dist/routerrouter.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jgarber623/RouterRouter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jgarber623/RouterRouter/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "load-grunt-config": "~0.7.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.7"
+  }
+}
