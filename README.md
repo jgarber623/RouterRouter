@@ -61,7 +61,7 @@ RouterRouter works in all modern browsers. The library makes use of several new(
 - `Object.keys` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys))
 - `Array.prototype.map()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map))
 
-Internet Explorer added native support for these features in version 9. Polyfills for older versions of IE are available on the above linked MDN pages. RouterRouter, in an effort to remain as lightweight and dependency-free as possible, leaves it to the developer to choose to polyfill older versions of IE.
+Internet Explorer added native support for these features in version 9, but if you wish to support older versions of IE, check out the polyfills available on the above linked MDN pages. RouterRouter, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose to polyfill older versions of IE.
 
 
 ## Authors
