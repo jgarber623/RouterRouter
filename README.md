@@ -8,6 +8,25 @@ RouterRouter is a very basic JavaScript routing library extracted from [Backbone
 - AMD/CommonJS module support
 - Uses Backbone's routing API
 
+RouterRouter is also really tiny:
+
+<table>
+	<tbody>
+		<tr>
+			<th>Uncompressed</th>
+			<td>3,049 bytes</td>
+		</tr>
+		<tr>
+			<th>Minified</th>
+			<td>1,912 bytes</td>
+		</tr>
+		<tr>
+			<th>Minifed and gzipped</th>
+			<td>979 bytes</td>
+		</tr>
+	</tbody>
+</table>
+
 
 ## Getting RouterRouter
 
