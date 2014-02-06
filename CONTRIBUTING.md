@@ -1,0 +1,55 @@
+# Contributing to RouterRouter
+
+I'd love to have your help improving RouterRouter! If you'd like to pitch in, you can do so in a number of ways:
+
+1. Look through open [Issues](https://github.com/jgarber623/RouterRouter/issues).
+2. Review any open [Pull Requests](https://github.com/jgarber623/RouterRouter/pulls).
+3. [Fork RouterRouter](#getting-set-up-to-contribute) and fix an open Issue or add your own feature.
+4. File new Issues if you have a good idea or see a bug and don't know how to fix it yourself. _Only do this after you've made sure the behavior or problem you're seeing isn't already documented in an open Issue._
+
+I definitely appreciate your interest in (and help improving) RouterRouter. Thanks!
+
+
+## Install development dependencies
+
+RouterRouter's build process uses [Grunt](http://gruntjs.com/), [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy), and [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify). As such, you'll need to install [Node.js](http://nodejs.org/).
+
+If you're using a Mac, the easiest way to install Node.js (and plenty of other great tools) is with [Homebrew](http://brew.sh/):
+
+	brew install node
+
+If you're using a different operating system, use a different package manager, or prefer not to use Homebrew, check out the [Node.js Downloads page](http://nodejs.org/download/).
+
+
+## Get set up to contribute
+
+Contributing to RouterRouter is pretty straightforward:
+
+1. Fork the RouterRouter repo and clone it.
+2. Install development dependencies by running `npm install` from the root of the project.
+3. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
+4. _Write some code!_
+5. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
+6. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
+7. Create a new Pull Request and I'll give it a look!
+
+
+## "But what files do I change?!?"
+
+Excellent question. RouterRouter's source code is in the file `src/routerrouter.js`. Make your changes here!
+
+When you're done working (and before you push your code or issue a pull request), run `grunt build` from the root of the project to recreate the files in the `dist` folder. This task will generate compiled and compressed versions of the project.
+
+**Do not directly edit the files in the `dist` folder!**
+
+
+## Code Style
+
+Code styles are like opinions: Everyone's got one and yours is better than mine. Here's how RouterRouter should be written:
+
+- Use hard tabs for indentation.
+- No trailing whitespace and blank lines should have whitespace removed.
+- Prefer single quotes over double quotes unless interpolating.
+- Follow the conventions you see in the existing source code as best as you can.
+
+Your bug fix or feature addition won't be rejected if it runs afoul of any (or all) of these guidelines, but it will definitely make everyone's lives a little easier.
