@@ -28,7 +28,7 @@
   }
 })(typeof window === "object" && window || this, function() {
   "use strict";
-  var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g, namedParam = /(\(\?)?:\w+/g, optionalParam = /\((.*?)\)/g, splatParam = /\*\w+/g, routeStripper = /^[#\/]|\s+$/g, rootStripper = /^\/+|\/+$/g, trailingSlash = /\/$/;
+  var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g, namedParam = /(\(\?)?:\w+/g, optionalParam = /\((.*?)\)/g, splatParam = /\*\w+/g, routeStripper = /^[#\/]|\s+$/g, trailingSlash = /\/$/;
   var isFunction = function(obj) {
     return typeof obj === "function";
   };
@@ -37,12 +37,7 @@
     if (this.options.routes) {
       this.routes = this.options.routes;
     }
-    if (!this.options.root) {
-      this.options.root = "/";
-    }
     this.location = window.location;
-    this.root = this.options.root;
-    this.root = ("/" + this.root + "/").replace(rootStripper, "/");
     this._bindRoutes();
   };
   RouterRouter.prototype = {

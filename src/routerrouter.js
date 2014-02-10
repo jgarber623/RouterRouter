@@ -40,9 +40,6 @@
 		// Cached regex for stripping a leading hash/slash and trailing space.
 		routeStripper = /^[#\/]|\s+$/g,
 
-		// Cached regex for stripping leading and trailing slashes.
-		rootStripper = /^\/+|\/+$/g,
-
 		// Cached regex for removing a trailing slash.
 		trailingSlash = /\/$/;
 
@@ -57,15 +54,7 @@
 			this.routes = this.options.routes;
 		}
 
-		if (!this.options.root) {
-			this.options.root = '/';
-		}
-
 		this.location = window.location;
-		this.root = this.options.root;
-
-		// Normalize root to always include a leading and trailing slash.
-		this.root = ('/' + this.root + '/').replace(rootStripper, '/');
 
 		this._bindRoutes();
 	};
