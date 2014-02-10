@@ -14,15 +14,15 @@ RouterRouter is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>3,049 bytes</td>
+			<td>2,850 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,912 bytes</td>
+			<td>1,781 bytes</td>
 		</tr>
 		<tr>
 			<th>Minifed and gzipped</th>
-			<td>979 bytes</td>
+			<td>939 bytes</td>
 		</tr>
 	</tbody>
 </table>
