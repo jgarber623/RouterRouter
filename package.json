@@ -8,6 +8,9 @@
   "keywords": [
     "router"
   ],
+  "scripts": {
+    "test": "grunt test"
+  },
   "main": "dist/routerrouter.js",
   "repository": {
     "type": "git",
