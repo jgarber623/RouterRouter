@@ -62,19 +62,23 @@ describe('RouterRouter', function() {
 		});
 	});
 
-	it('should match optional parts.', function() {
-		router.location = new Location('http://example.com/blog/sample-post-title');
+	describe('should match optional parts and', function() {
+		it('returns the optional part when an optional part matches.', function() {
+			router.location = new Location('http://example.com/blog/sample-post-title');
 
-		router.route(':foo(/:bar)', function(foo, bar) {
-			expect(foo).to.equal('blog');
-			expect(bar).to.equal('sample-post-title');
+			router.route(':foo(/:bar)', function(foo, bar) {
+				expect(foo).to.equal('blog');
+				expect(bar).to.equal('sample-post-title');
+			});
 		});
 
-		router.location = new Location('http://example.com/blog');
+		it('returns null when an optional part does not match.', function() {
+			router.location = new Location('http://example.com/blog');
 
-		router.route(':foo(/:bar)', function(foo, bar) {
-			expect(foo).to.equal('blog');
-			expect(bar).to.equal(null);
+			router.route(':foo(/:bar)', function(foo, bar) {
+				expect(foo).to.equal('blog');
+				expect(bar).to.equal(null);
+			});
 		});
 	});
 });
