@@ -29,9 +29,10 @@ Contributing to RouterRouter is pretty straightforward:
 2. Install development dependencies by running `npm install` from the root of the project.
 3. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
 4. _Write some code!_
-5. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
-6. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
-7. Create a new Pull Request and I'll give it a look!
+5. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `grunt test`.
+6. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
+7. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
+8. Create a new Pull Request and I'll give it a look!
 
 
 ## "But what files do I change?!?"
