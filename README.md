@@ -36,6 +36,28 @@ Adding RouterRouter to your project is easy! You've got a couple options:
 - Install via [Bower](http://bower.io/): `bower install routerrouter`
 
 
+## Pattern Matching
+
+RouterRouter will match the same patterns as [Backbone's Router](http://backbonejs.org/#Router):
+
+### Parameter Parts
+
+`foo/:bar` will match a fragment of `foo/1234` and pass a value of `1234` to the specified action. Multiple named parameters can be used as well (each named parameter is passed to the action as a separate argument):
+
+	foo/:bar/:biz       // matches 'foo/1/2'
+	foo/:bar/page-:biz  // matches 'foo/1/page-2'
+	foo/:bar-:biz       // matches 'foo/1-2'
+	
+
+### Splat Parts
+
+`foo/*bar` will match a fragment of `foo/1/2/3/4` and pass a value of `1/2/3/4` to the specified action.
+
+### Optional Parts
+
+`foo/:bar(/:biz)` will match fragments of `foo/1` and `foo/1/2`. In the first case, a value of `1` will be passed to the specified action. In the second case, values of `1` and `2` will be passed to the specified action as separate arguments.
+
+
 ## Usage
 
 ### Basic
