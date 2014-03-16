@@ -47,7 +47,6 @@ RouterRouter will match the same patterns as [Backbone's Router](http://backbone
 	foo/:bar/:biz       // matches 'foo/1/2'
 	foo/:bar/page-:biz  // matches 'foo/1/page-2'
 	foo/:bar-:biz       // matches 'foo/1-2'
-	
 
 ### Splat Parts
 
