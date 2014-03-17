@@ -97,11 +97,11 @@
 			route = route.replace(escapeRegExp, '\\$&')
 				.replace(optionalParam, '(?:$1)?')
 				.replace(namedParam, function(match, optional) {
-					return optional ? match : '([^\/]+)';
+					return optional ? match : '([^/?]+)';
 				})
-				.replace(splatParam, '(.*?)');
+				.replace(splatParam, '([^?]*?)');
 
-			return new RegExp('^' + route + '$');
+			return new RegExp('^' + route + '(?:\\?([\\s\\S]*))?$');
 		},
 
 		// Manually bind a single named route to a callback. For example:
