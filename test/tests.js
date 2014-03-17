@@ -33,7 +33,7 @@ Location.prototype = {
 
 describe('RouterRouter', function() {
 	it('should match an empty string.', function() {
-		isIndex = false;
+		var isIndex = false;
 
 		router.location = new Location('http://example.com');
 
@@ -42,6 +42,42 @@ describe('RouterRouter', function() {
 		});
 
 		expect(isIndex).to.equal(true);
+	});
+
+	it('should match a string.', function() {
+		var isMatched = false;
+
+		router.location = new Location('http://example.com/foo');
+
+		router.route('foo', function() {
+			isMatched = true;
+		});
+
+		expect(isMatched).to.equal(true);
+	});
+
+	it('should match a string with Unicode characters.', function() {
+		var isMatched = false;
+
+		router.location = new Location('http://example.com/motleycrüe');
+
+		router.route('motleycrüe', function() {
+			isMatched = true;
+		});
+
+		expect(isMatched).to.equal(true);
+	});
+
+	it('should match a string with newline characters.', function() {
+		var isMatched = false;
+
+		router.location = new Location('http://example.com/foo%0Abar');
+
+		router.route('foo\nbar', function() {
+			isMatched = true;
+		});
+
+		expect(isMatched).to.equal(true);
 	});
 
 	it('should match parameter parts.', function() {
