@@ -1,4 +1,4 @@
-var expect = chai.expect;
+var should = chai.should();
 var router = new RouterRouter();
 
 // Override browser's native Location object. See:
@@ -41,7 +41,7 @@ describe('RouterRouter', function() {
 			isIndex = true;
 		});
 
-		expect(isIndex).to.equal(true);
+		isIndex.should.equal(true);
 	});
 
 	it('should match a string.', function() {
@@ -53,7 +53,7 @@ describe('RouterRouter', function() {
 			isMatched = true;
 		});
 
-		expect(isMatched).to.equal(true);
+		isMatched.should.equal(true);
 	});
 
 	it('should match a string with Unicode characters.', function() {
@@ -65,7 +65,7 @@ describe('RouterRouter', function() {
 			isMatched = true;
 		});
 
-		expect(isMatched).to.equal(true);
+		isMatched.should.equal(true);
 	});
 
 	it('should match a string with newline characters.', function() {
@@ -77,16 +77,16 @@ describe('RouterRouter', function() {
 			isMatched = true;
 		});
 
-		expect(isMatched).to.equal(true);
+		isMatched.should.equal(true);
 	});
 
 	it('should match parameter parts.', function() {
 		router.location = new Location('http://example.com/1/2/3');
 
 		router.route(':foo/:bar/:biz', function(foo, bar, biz) {
-			expect(foo).to.equal('1');
-			expect(bar).to.equal('2');
-			expect(biz).to.equal('3');
+			foo.should.equal('1');
+			bar.should.equal('2');
+			biz.should.equal('3');
 		});
 	});
 
@@ -94,7 +94,7 @@ describe('RouterRouter', function() {
 		router.location = new Location('http://example.com/path/to/some/file.txt');
 
 		router.route('path/*foo', function(foo) {
-			expect(foo).to.equal('to/some/file.txt');
+			foo.should.equal('to/some/file.txt');
 		});
 	});
 
@@ -103,8 +103,8 @@ describe('RouterRouter', function() {
 			router.location = new Location('http://example.com/blog/sample-post-title');
 
 			router.route(':foo(/:bar)', function(foo, bar) {
-				expect(foo).to.equal('blog');
-				expect(bar).to.equal('sample-post-title');
+				foo.should.equal('blog');
+				bar.should.equal('sample-post-title');
 			});
 		});
 
@@ -112,8 +112,8 @@ describe('RouterRouter', function() {
 			router.location = new Location('http://example.com/blog');
 
 			router.route(':foo(/:bar)', function(foo, bar) {
-				expect(foo).to.equal('blog');
-				expect(bar).to.equal(null);
+				foo.should.equal('blog');
+				should.not.exist(bar);
 			});
 		});
 	});
