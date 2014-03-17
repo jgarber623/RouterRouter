@@ -1,4 +1,4 @@
-var should = chai.should();
+var assert = chai.assert;
 var router = new RouterRouter();
 
 // Override browser's native Location object. See:
@@ -33,60 +33,44 @@ Location.prototype = {
 
 describe('RouterRouter', function() {
 	it('should match an empty string.', function() {
-		var isIndex = false;
-
 		router.location = new Location('http://example.com');
 
 		router.route('', function() {
-			isIndex = true;
+			assert.ok(true);
 		});
-
-		isIndex.should.equal(true);
 	});
 
 	it('should match a string.', function() {
-		var isMatched = false;
-
 		router.location = new Location('http://example.com/foo');
 
 		router.route('foo', function() {
-			isMatched = true;
+			assert.ok(true);
 		});
-
-		isMatched.should.equal(true);
 	});
 
 	it('should match a string with Unicode characters.', function() {
-		var isMatched = false;
-
 		router.location = new Location('http://example.com/motleycrüe');
 
 		router.route('motleycrüe', function() {
-			isMatched = true;
+			assert.ok(true);
 		});
-
-		isMatched.should.equal(true);
 	});
 
 	it('should match a string with newline characters.', function() {
-		var isMatched = false;
-
 		router.location = new Location('http://example.com/foo%0Abar');
 
 		router.route('foo\nbar', function() {
-			isMatched = true;
+			assert.ok(true);
 		});
-
-		isMatched.should.equal(true);
 	});
 
 	it('should match parameter parts.', function() {
 		router.location = new Location('http://example.com/1/2/3');
 
 		router.route(':foo/:bar/:biz', function(foo, bar, biz) {
-			foo.should.equal('1');
-			bar.should.equal('2');
-			biz.should.equal('3');
+			assert.strictEqual(foo, '1');
+			assert.strictEqual(bar, '2');
+			assert.strictEqual(biz, '3');
 		});
 	});
 
@@ -94,7 +78,7 @@ describe('RouterRouter', function() {
 		router.location = new Location('http://example.com/path/to/some/file.txt');
 
 		router.route('path/*foo', function(foo) {
-			foo.should.equal('to/some/file.txt');
+			assert.strictEqual(foo, 'to/some/file.txt');
 		});
 	});
 
@@ -103,8 +87,8 @@ describe('RouterRouter', function() {
 			router.location = new Location('http://example.com/blog/sample-post-title');
 
 			router.route(':foo(/:bar)', function(foo, bar) {
-				foo.should.equal('blog');
-				bar.should.equal('sample-post-title');
+				assert.strictEqual(foo, 'blog');
+				assert.strictEqual(bar, 'sample-post-title');
 			});
 		});
 
@@ -112,8 +96,8 @@ describe('RouterRouter', function() {
 			router.location = new Location('http://example.com/blog');
 
 			router.route(':foo(/:bar)', function(foo, bar) {
-				foo.should.equal('blog');
-				should.not.exist(bar);
+				assert.strictEqual(foo, 'blog');
+				assert.strictEqual(bar, null);
 			});
 		});
 	});
