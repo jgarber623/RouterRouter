@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter 0.1.1
+ *  RouterRouter 0.1.2
  *
  *  A very basic JavaScript routing library extracted from Backbone's Router.
  *
@@ -60,9 +60,9 @@
     },
     _routeToRegExp: function(route) {
       route = route.replace(escapeRegExp, "\\$&").replace(optionalParam, "(?:$1)?").replace(namedParam, function(match, optional) {
-        return optional ? match : "([^/]+)";
-      }).replace(splatParam, "(.*?)");
-      return new RegExp("^" + route + "$");
+        return optional ? match : "([^/?]+)";
+      }).replace(splatParam, "([^?]*?)");
+      return new RegExp("^" + route + "(?:\\?([\\s\\S]*))?$");
     },
     route: function(route, name, callback) {
       route = this._routeToRegExp(route);
