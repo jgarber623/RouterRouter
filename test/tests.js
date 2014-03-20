@@ -91,4 +91,10 @@ describe('RouterRouter', function() {
 			});
 		});
 	});
+
+	it('should match a regular expression.', function() {
+		test('http://example.com/foo/bar/biz/baz', new RegExp(/^(.*?)\/baz$/), function(foo) {
+			assert.strictEqual(foo, 'foo/bar/biz');
+		});
+	});
 });
