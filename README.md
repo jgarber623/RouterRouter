@@ -14,15 +14,15 @@ RouterRouter is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>2,873 bytes</td>
+			<td>2,977 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,804 bytes</td>
+			<td>1,878 bytes</td>
 		</tr>
 		<tr>
 			<th>Minifed and gzipped</th>
-			<td>956 bytes</td>
+			<td>995 bytes</td>
 		</tr>
 	</tbody>
 </table>
@@ -55,6 +55,10 @@ RouterRouter will match the same patterns as [Backbone's Router](http://backbone
 ### Optional Parts
 
 `foo/:bar(/:biz)` will match fragments of `foo/1` and `foo/1/2`. In the first case, a value of `1` will be passed to the specified action. In the second case, values of `1` and `2` will be passed to the specified action as separate arguments.
+
+### Regular Expressions
+
+`/^(.*?)\/baz$/` will match a fragment of `foo/bar/biz/baz` and pass a value of `foo/bar/biz` to the specified action.
 
 
 ## Usage
