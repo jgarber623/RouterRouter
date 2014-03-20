@@ -43,8 +43,9 @@
 		// Cached regex for removing a trailing slash.
 		trailingSlash = /\/$/;
 
-	var isFunction = function(obj) {
-		return typeof obj === 'function';
+	// Method for determining the type of a given object.
+	var isType = function(obj, name) {
+		return Object.prototype.toString.call(obj) === '[object ' + name + ']';
 	};
 
 	var RouterRouter = function(options) {
@@ -111,9 +112,11 @@
 		//   });
 		//
 		route: function(route, name, callback) {
-			route = this._routeToRegExp(route);
+			if (!isType(route, 'RegExp')) {
+				route = this._routeToRegExp(route);
+			}
 
-			if (isFunction(name)) {
+			if (isType(name, 'Function')) {
 				callback = name;
 				name = '';
 			}
@@ -127,7 +130,7 @@
 			if (route.test(fragment)) {
 				var args = this._extractParameters(route, fragment);
 
-				if (isFunction(callback)) {
+				if (isType(callback, 'Function')) {
 					callback.apply(this, args);
 				}
 			}
