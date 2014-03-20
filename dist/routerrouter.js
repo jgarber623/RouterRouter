@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter 0.1.2
+ *  RouterRouter 0.2.1
  *
  *  A very basic JavaScript routing library extracted from Backbone's Router.
  *
@@ -29,8 +29,8 @@
 })(typeof window === "object" && window || this, function() {
   "use strict";
   var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g, namedParam = /(\(\?)?:\w+/g, optionalParam = /\((.*?)\)/g, splatParam = /\*\w+/g, routeStripper = /^[#\/]|\s+$/g, trailingSlash = /\/$/;
-  var isFunction = function(obj) {
-    return typeof obj === "function";
+  var isType = function(obj, name) {
+    return Object.prototype.toString.call(obj) === "[object " + name + "]";
   };
   var RouterRouter = function(options) {
     this.options = typeof options !== "undefined" ? options : {};
@@ -65,8 +65,10 @@
       return new RegExp("^" + route + "(?:\\?([\\s\\S]*))?$");
     },
     route: function(route, name, callback) {
-      route = this._routeToRegExp(route);
-      if (isFunction(name)) {
+      if (!isType(route, "RegExp")) {
+        route = this._routeToRegExp(route);
+      }
+      if (isType(name, "Function")) {
         callback = name;
         name = "";
       }
@@ -76,7 +78,7 @@
       var fragment = this._getFragment(this.location.pathname);
       if (route.test(fragment)) {
         var args = this._extractParameters(route, fragment);
-        if (isFunction(callback)) {
+        if (isType(callback, "Function")) {
           callback.apply(this, args);
         }
       }
