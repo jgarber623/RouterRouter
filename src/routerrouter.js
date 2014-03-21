@@ -18,16 +18,14 @@
  */
 
 (function(root, factory) {
-	'use strict';
-
-	if (typeof exports === 'object' && module) {
-		module.exports = factory(); // CommonJS
-	} else if (typeof define === 'function' && define.amd) {
-		define(factory); // AMD
+	if (typeof define === 'function' && define.amd) {
+		define([], factory);
+	} else if (typeof exports === 'object') {
+		module.exports = factory();
 	} else {
-		root.RouterRouter = factory(); // vanilla JS
+		root.RouterRouter = factory();
 	}
-}((typeof window === 'object' && window) || this, function() {
+}(this, function() {
 	'use strict';
 
 	// Cached regular expressions for matching named param parts and splatted

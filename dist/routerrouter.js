@@ -18,15 +18,14 @@
  */
 
 (function(root, factory) {
-  "use strict";
-  if (typeof exports === "object" && module) {
+  if (typeof define === "function" && define.amd) {
+    define([], factory);
+  } else if (typeof exports === "object") {
     module.exports = factory();
-  } else if (typeof define === "function" && define.amd) {
-    define(factory);
   } else {
     root.RouterRouter = factory();
   }
-})(typeof window === "object" && window || this, function() {
+})(this, function() {
   "use strict";
   var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g, namedParam = /(\(\?)?:\w+/g, optionalParam = /\((.*?)\)/g, splatParam = /\*\w+/g, routeStripper = /^[#\/]|\s+$/g, trailingSlash = /\/$/;
   var isType = function(obj, name) {
