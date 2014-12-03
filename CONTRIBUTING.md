@@ -53,4 +53,4 @@ Code styles are like opinions: Everyone's got one and yours is better than mine.
 - Prefer single quotes over double quotes unless interpolating.
 - Follow the conventions you see in the existing source code as best as you can.
 
-Your bug fix or feature addition won't be rejected if it runs afoul of any (or all) of these guidelines, but it will definitely make everyone's lives a little easier.
+Your bug fix or feature addition won't be rejected if it runs afoul of any (or all) of these guidelines, but following the guidelines will definitely make everyone's lives a little easier.
