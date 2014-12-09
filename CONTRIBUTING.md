@@ -12,9 +12,7 @@ I definitely appreciate your interest in (and help improving) RouterRouter. Than
 
 ## Install development dependencies
 
-RouterRouter's build process uses [Grunt](http://gruntjs.com/), [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy), and [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify). As such, you'll need to install [Node.js](http://nodejs.org/).
-
-If you're using a Mac, the easiest way to install Node.js (and plenty of other great tools) is with [Homebrew](http://brew.sh/):
+RouterRouter's build process uses [npm](https://www.npmjs.com) and [Node.js](http://nodejs.org/). If you're using a Mac, the easiest way to install npm and Node.js (and plenty of other great tools) is with [Homebrew](http://brew.sh/):
 
 	brew install node
 
@@ -29,7 +27,7 @@ Contributing to RouterRouter is pretty straightforward:
 2. Install development dependencies by running `npm install` from the root of the project.
 3. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
 4. _Write some code!_
-5. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `grunt test`.
+5. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `npm test`.
 6. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
 7. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
 8. Create a new Pull Request and I'll give it a look!
@@ -39,7 +37,7 @@ Contributing to RouterRouter is pretty straightforward:
 
 Excellent question. RouterRouter's source code is in the file `src/routerrouter.js`. Make your changes here!
 
-When you're done working (and before you push your code or issue a pull request), run `grunt build` from the root of the project to recreate the files in the `dist` folder. This task will generate compiled and compressed versions of the project.
+When you're done working (and before you push your code or issue a pull request), run `npm run build` from the root of the project to recreate the files in the `dist` folder. This task will generate compiled and compressed versions of the project.
 
 **Do not directly edit the files in the `dist` folder!**
 
