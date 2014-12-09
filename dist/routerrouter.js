@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter
+ *  RouterRouter 0.2.2
  *
  *  A very basic JavaScript routing library extracted from Backbone's Router.
  *
@@ -7,7 +7,7 @@
  *  Source code available at: https://github.com/jgarber623/RouterRouter
  *
  *  Backbone is
- *  (c) 2011-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ *  (c) 2011-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  *
  *  RouterRouter is
  *  (c) 2013—present Jason Garber
@@ -16,7 +16,6 @@
  *
  *  For more about Backbone, visit: http://backbonejs.org
  */
-
 
 (function(root, factory) {
   if (typeof define === "function" && define.amd) {
