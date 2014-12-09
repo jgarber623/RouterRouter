@@ -112,7 +112,7 @@ Internet Explorer added native support for these features in version 9, but if y
 
 Credit for the really difficult parts of RouterRouter goes to Jeremy Ashkenas, DocumentCloud, Investigative Reporters & Editors, and everyone else who has contributed code to Backbone.
 
-Special thanks to [Nate Hunzaker](https://github.com/nhunzaker) for his guidance on testing and to [Viget](http://viget.com/) for their encouragement and commitment to open source projects.
+Special thanks to [@nhunzaker](https://github.com/nhunzaker) for his guidance on testing and to [Viget](http://viget.com/) for their encouragement and commitment to open source projects.
 
 RouterRouter is written and maintained by [@jgarber623](https://github.com/jgarber623).
 
