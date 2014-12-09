@@ -12,7 +12,7 @@ I definitely appreciate your interest in (and help improving) RouterRouter. Than
 
 ## Install development dependencies
 
-RouterRouter's build process uses [npm](https://www.npmjs.com) and [Node.js](http://nodejs.org/). If you're using a Mac, the easiest way to install npm and Node.js (and plenty of other great tools) is with [Homebrew](http://brew.sh/):
+RouterRouter's build process uses [npm](https://www.npmjs.com/) and [Node.js](http://nodejs.org/). If you're using a Mac, the easiest way to install npm and Node.js (and plenty of other great tools) is with [Homebrew](http://brew.sh/):
 
 	brew install node
 
