@@ -2,6 +2,8 @@
 
 RouterRouter is a very basic JavaScript routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-143). Using a modified version of Backbone's routing code, RouterRouter provides Backbone-style route definition while remaining a small, standalone, dependency-free library.
 
+For more on RouterRouter's development, check out the [introductory post](http://sixtwothree.org/posts/finally-introducing-routerrouter-a-javascript-routing-library).
+
 ### Key Features
 
 - Dependency-free
@@ -106,6 +108,11 @@ RouterRouter works in all modern browsers. The library makes use of several new(
 - `Array.prototype.map()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map))
 
 Internet Explorer added native support for these features in version 9, but if you wish to support older versions of IE, check out the polyfills available on the above linked MDN pages. RouterRouter, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose to polyfill older versions of IE.
+
+
+## Limitations
+
+RouterRouter doesn't (currently) support the [HTML5 History API](http://diveintohtml5.info/history.html). Support for this feature may be added in the future, but for now, keeping the library as small as possible remains the project's primary goal.
 
 
 ## Acknowledgments
