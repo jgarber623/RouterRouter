@@ -1,5 +1,5 @@
 {
-  "name": "RouterRouter",
+  "name": "routerrouter",
   "description": "A very basic JavaScript routing library extracted from Backbone's Router.",
   "version": "0.2.3",
   "main": "dist/routerrouter.js",
