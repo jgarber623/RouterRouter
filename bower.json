@@ -1,7 +1,7 @@
 {
   "name": "RouterRouter",
   "description": "A very basic JavaScript routing library extracted from Backbone's Router.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "dist/routerrouter.js",
   "license": "MIT",
   "ignore": [
@@ -20,6 +20,6 @@
   "homepage": "https://github.com/jgarber623/RouterRouter",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jgarber623/RouterRouter.git"
+    "url": "https://github.com/jgarber623/RouterRouter.git"
   }
 }

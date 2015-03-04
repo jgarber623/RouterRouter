@@ -1,6 +1,6 @@
 {
   "name": "RouterRouter",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A very basic JavaScript routing library extracted from Backbone's Router.",
   "keywords": [
     "router"
@@ -14,7 +14,7 @@
   "main": "dist/routerrouter.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jgarber623/RouterRouter.git"
+    "url": "https://github.com/jgarber623/RouterRouter.git"
   },
   "scripts": {
     "build": "./scripts/build.sh",
