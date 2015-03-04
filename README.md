@@ -36,6 +36,7 @@ Adding RouterRouter to your project is easy! You've got a couple options:
 
 - [Download a tagged version](https://github.com/jgarber623/RouterRouter/tags) from GitHub and do it yourself _(old school)_.
 - Install via [Bower](http://bower.io/): `bower install routerrouter`
+- Install via [npm](https://www.npmjs.com/): `npm install routerrouter`
 
 
 ## Pattern Matching
