@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter 0.2.2
+ *  RouterRouter 0.2.4
  *
  *  A very basic JavaScript routing library extracted from Backbone's Router.
  *
