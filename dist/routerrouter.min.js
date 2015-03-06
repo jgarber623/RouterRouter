@@ -1,7 +1,7 @@
 /*!
  *  RouterRouter 0.2.4
  *
- *  A very basic JavaScript routing library extracted from Backbone's Router.
+ *  A very basic JavaScript routing library extracted from Backbone’s Router.
  *
  *  Lovingly derived by Jason Garber (http://sixtwothree.org)
  *  Source code available at: https://github.com/jgarber623/RouterRouter
