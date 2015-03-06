@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var childProcess = require('child_process'),
+var exec = require('child_process').exec,
 	pkg = require('../package.json'),
 	preamble = '/*!\n' +
 		' *  RouterRouter ' + pkg.version + '\n' +
@@ -21,5 +21,5 @@ var childProcess = require('child_process'),
 		' *  For more about Backbone, visit: http://backbonejs.org\n' +
 		' */\n';
 
-childProcess.exec('uglifyjs src/routerrouter.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/routerrouter.js');
-childProcess.exec('uglifyjs src/routerrouter.js --compress --mangle --preamble "' + preamble + '" --output dist/routerrouter.min.js');
+exec('uglifyjs src/routerrouter.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/routerrouter.js');
+exec('uglifyjs src/routerrouter.js --compress --mangle --preamble "' + preamble + '" --output dist/routerrouter.min.js');
