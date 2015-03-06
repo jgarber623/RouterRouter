@@ -21,12 +21,13 @@
     "url": "https://github.com/jgarber623/RouterRouter.git"
   },
   "scripts": {
-    "build": "node ./scripts/build.js",
-    "test": "./scripts/test.sh"
+    "build": "./scripts/build.js",
+    "test": "./scripts/test.js"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "mocha-phantomjs": "^3.5.2",
+    "chai": "^2.1.1",
+    "mocha-phantomjs": "^3.5.3",
+    "phantomjs": "^1.9.16",
     "uglify-js": "^2.4.16"
   }
 }
