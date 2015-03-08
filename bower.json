@@ -1,25 +1,32 @@
 {
   "name": "routerrouter",
-  "description": "A very basic JavaScript routing library extracted from Backbone’s Router.",
   "version": "0.2.4",
-  "main": "dist/routerrouter.js",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "CONTRIBUTING.md",
-    "package.json",
-    "scripts",
-    "test"
-  ],
-  "keywords": [
-    "router"
-  ],
+  "homepage": "https://github.com/jgarber623/RouterRouter",
   "authors": [
     "Jason Garber <jason@sixtwothree.org> (http://sixtwothree.org)"
   ],
-  "homepage": "https://github.com/jgarber623/RouterRouter",
+  "description": "A very basic JavaScript routing library extracted from Backbone’s Router.",
+  "main": "dist/routerrouter.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "backbone",
+    "javascript",
+    "router"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "scripts",
+    "test",
+    "CONTRIBUTING.md"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jgarber623/RouterRouter.git"
+    "url": "git://github.com/jgarber623/RouterRouter.git"
   }
 }

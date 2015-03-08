@@ -2,28 +2,33 @@
   "name": "routerrouter",
   "version": "0.2.4",
   "description": "A very basic JavaScript routing library extracted from Backbone’s Router.",
-  "keywords": [
-    "router"
-  ],
-  "homepage": "https://github.com/jgarber623/RouterRouter",
-  "bugs": {
-    "url": "https://github.com/jgarber623/RouterRouter/issues"
-  },
-  "license": "MIT",
-  "author": {
-    "name": "Jason Garber",
-    "email": "jason@sixtwothree.org",
-    "url": "http://sixtwothree.org"
-  },
   "main": "dist/routerrouter.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jgarber623/RouterRouter.git"
+  "directories": {
+    "test": "./test"
   },
   "scripts": {
     "build": "./scripts/build.js",
     "test": "./scripts/test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgarber623/RouterRouter.git"
+  },
+  "keywords": [
+    "backbone",
+    "javascript",
+    "router"
+  ],
+  "author": {
+    "name": "Jason Garber",
+    "email": "jason@sixtwothree.org",
+    "url": "http://sixtwothree.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgarber623/RouterRouter/issues"
+  },
+  "homepage": "https://github.com/jgarber623/RouterRouter",
   "devDependencies": {
     "chai": "^2.1.1",
     "mocha-phantomjs": "^3.5.3",
