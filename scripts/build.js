@@ -2,6 +2,7 @@
 
 var exec = require('child_process').exec,
 	pkg = require('../package.json'),
+	year = new Date().getFullYear(),
 	preamble = '/*!\n' +
 		' *  RouterRouter ' + pkg.version + '\n' +
 		' *\n' +
@@ -11,10 +12,10 @@ var exec = require('child_process').exec,
 		' *  Source code available at: ' + pkg.homepage + '\n' +
 		' *\n' +
 		' *  Backbone is\n' +
-		' *  (c) 2011-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors\n' +
+		' *  (c) 2011-' + year + ' Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors\n' +
 		' *\n' +
 		' *  RouterRouter is\n' +
-		' *  (c) 2013-present ' + pkg.author.name + '\n' +
+		' *  (c) 2013-' + year + ' ' + pkg.author.name + '\n' +
 		' *\n' +
 		' *  Like Backbone, RouterRouter may be freely distributed under the MIT license.\n' +
 		' *\n' +

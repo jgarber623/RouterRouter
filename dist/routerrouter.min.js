@@ -7,10 +7,10 @@
  *  Source code available at: https://github.com/jgarber623/RouterRouter
  *
  *  Backbone is
- *  (c) 2011-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ *  (c) 2011-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  *
  *  RouterRouter is
- *  (c) 2013-present Jason Garber
+ *  (c) 2013-2015 Jason Garber
  *
  *  Like Backbone, RouterRouter may be freely distributed under the MIT license.
  *
