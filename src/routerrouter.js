@@ -72,7 +72,7 @@
 	};
 
 	var RouterRouter = function(options) {
-		this.options = (typeof options !== 'undefined') ? options : {};
+		this.options = options || {};
 
 		bindRoutes(this.options.routes);
 	};
