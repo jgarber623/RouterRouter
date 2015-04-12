@@ -1,6 +1,6 @@
 # RouterRouter
 
-RouterRouter is a very basic JavaScript routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-143). Using a modified version of Backbone's routing code, RouterRouter provides Backbone-style route definition while remaining a small, standalone, dependency-free library.
+RouterRouter is a very basic JavaScript routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-169). Using a modified version of Backbone's routing code, RouterRouter provides Backbone-style route definition while remaining a small, standalone, dependency-free library.
 
 For more on RouterRouter's development, check out the [introductory post](http://sixtwothree.org/posts/finally-introducing-routerrouter-a-javascript-routing-library).
 
@@ -16,15 +16,15 @@ RouterRouter is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>2,915 bytes</td>
+			<td>2,731 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,827 bytes</td>
+			<td>1,636 bytes</td>
 		</tr>
 		<tr>
 			<th>Minifed and gzipped</th>
-			<td>982 bytes</td>
+			<td>933 bytes</td>
 		</tr>
 	</tbody>
 </table>

@@ -1,6 +1,6 @@
 {
   "name": "routerrouter",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "description": "A very basic JavaScript routing library extracted from Backbone’s Router.",
   "main": "dist/routerrouter.js",
   "directories": {
