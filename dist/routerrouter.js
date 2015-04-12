@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter 1.0.0
+ *  RouterRouter 1.0.1
  *
  *  A very basic JavaScript routing library extracted from Backbone’s Router.
  *
@@ -55,7 +55,7 @@
     return new RegExp("^" + route + "(?:\\?([\\s\\S]*))?$");
   };
   var RouterRouter = function(options) {
-    this.options = typeof options !== "undefined" ? options : {};
+    this.options = options || {};
     bindRoutes(this.options.routes);
   };
   RouterRouter.prototype.route = function(route, name, callback) {
