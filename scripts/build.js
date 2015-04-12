@@ -14,7 +14,7 @@ var exec = require('child_process').exec,
 		' *  (c) 2011-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors\n' +
 		' *\n' +
 		' *  RouterRouter is\n' +
-		' *  (c) 2013—present ' + pkg.author.name + '\n' +
+		' *  (c) 2013-present ' + pkg.author.name + '\n' +
 		' *\n' +
 		' *  Like Backbone, RouterRouter may be freely distributed under the MIT license.\n' +
 		' *\n' +
