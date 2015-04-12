@@ -47,9 +47,11 @@ RouterRouter will match the same patterns as [Backbone's Router](http://backbone
 
 `foo/:bar` will match a fragment of `foo/1234` and pass a value of `1234` to the specified action. Multiple named parameters can be used as well (each named parameter is passed to the action as a separate argument):
 
-	foo/:bar/:biz       // matches 'foo/1/2'
-	foo/:bar/page-:biz  // matches 'foo/1/page-2'
-	foo/:bar-:biz       // matches 'foo/1-2'
+```
+foo/:bar/:biz       // matches 'foo/1/2'
+foo/:bar/page-:biz  // matches 'foo/1/page-2'
+foo/:bar-:biz       // matches 'foo/1-2'
+```
 
 ### Splat Parts
 
@@ -70,35 +72,39 @@ RouterRouter will match the same patterns as [Backbone's Router](http://backbone
 
 The most basic example, matching a single route:
 
-	var router = new RouterRouter();
+```js
+var router = new RouterRouter();
 
-	router.route('foo/:bar', function(bar) { // matches http://example.com/foo/1234
-		console.log(bar); // logs 1234
-	});
+router.route('foo/:bar', function(bar) { // matches http://example.com/foo/1234
+	console.log(bar); // logs 1234
+});
+```
 
 ### Advanced
 
 A more complex example, matching multiple routes each with their own callbacks:
 
-	var router = new RouterRouter({
-		routes: {
-			'foo/:bar': 'whiskey', // matches http://example.com/foo/1234
-			'biz/*baz': 'tango',   // matches http://example.com/biz/1/2/3/4
-			'': 'foxtrot'          // matches http://example.com/
-		},
+```js
+var router = new RouterRouter({
+	routes: {
+		'foo/:bar': 'whiskey', // matches http://example.com/foo/1234
+		'biz/*baz': 'tango',   // matches http://example.com/biz/1/2/3/4
+		'': 'foxtrot'          // matches http://example.com/
+	},
 
-		foxtrot: function() {
-			console.log('This very basic route matches the root URL.');
-		},
+	foxtrot: function() {
+		console.log('This very basic route matches the root URL.');
+	},
 
-		tango: function(baz) {
-			console.log(baz); // logs 1/2/3/4
-		},
+	tango: function(baz) {
+		console.log(baz); // logs 1/2/3/4
+	},
 
-		whiskey: function(bar) {
-			console.log(bar); // logs 1234
-		}
-	});
+	whiskey: function(bar) {
+		console.log(bar); // logs 1234
+	}
+});
+```
 
 
 ## Browser Support
