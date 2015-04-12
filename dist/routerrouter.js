@@ -56,7 +56,6 @@
   };
   var RouterRouter = function(options) {
     this.options = typeof options !== "undefined" ? options : {};
-    this.location = window.location;
     bindRoutes(this.options.routes);
   };
   RouterRouter.prototype.route = function(route, name, callback) {
@@ -70,7 +69,7 @@
     if (!callback) {
       callback = this.options[name];
     }
-    var fragment = getFragment(this.location.pathname);
+    var fragment = getFragment(window.location.pathname);
     if (route.test(fragment)) {
       var args = extractParameters(route, fragment);
       if (isType(callback, "Function")) {
