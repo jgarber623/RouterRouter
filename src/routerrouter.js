@@ -22,100 +22,93 @@
 		// Cached regex for removing a trailing slash.
 		trailingSlash = /\/$/;
 
+	// Bind all defined routes. We have to reverse the order of the routes
+	// here to support behavior where the most general routes can be defined
+	// at the bottom of the route map.
+	var bindRoutes = function(routes) {
+		if (routes) {
+			var route,
+				keys = Object.keys(routes);
+
+			while (typeof (route = keys.pop()) !== 'undefined') {
+				this.route(route, routes[route]);
+			}
+		}
+	};
+
+	// Given a route, and a URL fragment that it matches, return the array of
+	// extracted decoded parameters. Empty or unmatched parameters will be
+	// treated as `null` to normalize cross-browser behavior.
+	var extractParameters = function(route, fragment) {
+		var params = route.exec(fragment).slice(1);
+
+		return params.map(function(param) {
+			return param ? decodeURIComponent(param) : null;
+		});
+	};
+
+	// Get the cross-browser normalized URL fragment, either from the URL,
+	// the hash, or the override.
+	var getFragment = function(fragment) {
+		return fragment.replace(routeStripper, '').replace(trailingSlash, '');
+	};
+
 	// Method for determining the type of a given object.
 	var isType = function(obj, name) {
 		return Object.prototype.toString.call(obj) === '[object ' + name + ']';
 	};
 
-	var RouterRouter = function(options) {
-		this.options = (typeof options !== 'undefined') ? options : {};
+	// Convert a route string into a regular expression, suitable for matching
+	// against the current location hash.
+	var routeToRegExp = function(route) {
+		route = route.replace(escapeRegExp, '\\$&')
+			.replace(optionalParam, '(?:$1)?')
+			.replace(namedParam, function(match, optional) {
+				return optional ? match : '([^/?]+)';
+			})
+			.replace(splatParam, '([^?]*?)');
 
-		if (this.options.routes) {
-			this.routes = this.options.routes;
-		}
-
-		this.location = window.location;
-
-		this._bindRoutes();
+		return new RegExp('^' + route + '(?:\\?([\\s\\S]*))?$');
 	};
 
-	RouterRouter.prototype = {
-		// Bind all defined routes. We have to reverse the order of the routes
-		// here to support behavior where the most general routes can be defined
-		// at the bottom of the route map.
-		_bindRoutes: function() {
-			if (this.routes) {
-				var route,
-					routes = Object.keys(this.routes);
+	var RouterRouter = function(options) {
+		this.options = (typeof options !== 'undefined') ? options : {};
+		this.location = window.location;
 
-				while (typeof (route = routes.pop()) !== 'undefined') {
-					this.route(route, this.routes[route]);
-				}
-			}
-		},
+		bindRoutes(this.options.routes);
+	};
 
-		// Given a route, and a URL fragment that it matches, return the array of
-		// extracted decoded parameters. Empty or unmatched parameters will be
-		// treated as `null` to normalize cross-browser behavior.
-		_extractParameters: function(route, fragment) {
-			var params = route.exec(fragment).slice(1);
-
-			return params.map(function(param) {
-				return param ? decodeURIComponent(param) : null;
-			});
-		},
-
-		// Get the cross-browser normalized URL fragment, either from the URL,
-		// the hash, or the override.
-		_getFragment: function(fragment) {
-			return fragment.replace(routeStripper, '').replace(trailingSlash, '');
-		},
-
-		// Convert a route string into a regular expression, suitable for matching
-		// against the current location hash.
-		_routeToRegExp: function(route) {
-			route = route.replace(escapeRegExp, '\\$&')
-				.replace(optionalParam, '(?:$1)?')
-				.replace(namedParam, function(match, optional) {
-					return optional ? match : '([^/?]+)';
-				})
-				.replace(splatParam, '([^?]*?)');
-
-			return new RegExp('^' + route + '(?:\\?([\\s\\S]*))?$');
-		},
-
-		// Manually bind a single named route to a callback. For example:
-		//
-		//   router.route('search/:query/p:num', 'search', function(query, num) {
-		//     ...
-		//   });
-		//
-		route: function(route, name, callback) {
-			if (!isType(route, 'RegExp')) {
-				route = this._routeToRegExp(route);
-			}
-
-			if (isType(name, 'Function')) {
-				callback = name;
-				name = '';
-			}
-
-			if (!callback) {
-				callback = this.options[name];
-			}
-
-			var fragment = this._getFragment(this.location.pathname);
-
-			if (route.test(fragment)) {
-				var args = this._extractParameters(route, fragment);
-
-				if (isType(callback, 'Function')) {
-					callback.apply(this, args);
-				}
-			}
-
-			return this;
+	// Manually bind a single named route to a callback. For example:
+	//
+	//   router.route('search/:query/p:num', 'search', function(query, num) {
+	//     ...
+	//   });
+	//
+	RouterRouter.prototype.route = function(route, name, callback) {
+		if (!isType(route, 'RegExp')) {
+			route = routeToRegExp(route);
 		}
+
+		if (isType(name, 'Function')) {
+			callback = name;
+			name = '';
+		}
+
+		if (!callback) {
+			callback = this.options[name];
+		}
+
+		var fragment = getFragment(this.location.pathname);
+
+		if (route.test(fragment)) {
+			var args = extractParameters(route, fragment);
+
+			if (isType(callback, 'Function')) {
+				callback.apply(this, args);
+			}
+		}
+
+		return this;
 	};
 
 	return RouterRouter;
