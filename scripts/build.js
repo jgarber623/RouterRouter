@@ -24,3 +24,5 @@ var exec = require('child_process').exec,
 
 exec('uglifyjs src/routerrouter.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/routerrouter.js');
 exec('uglifyjs src/routerrouter.js --compress --mangle --preamble "' + preamble + '" --output dist/routerrouter.min.js');
+
+console.log('RouterRouter ' + pkg.version + ' built successfully!');
