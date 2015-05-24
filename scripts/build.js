@@ -26,4 +26,4 @@ var colors = require('colors'),
 exec('uglifyjs src/routerrouter.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/routerrouter.js');
 exec('uglifyjs src/routerrouter.js --compress --mangle --preamble "' + preamble + '" --output dist/routerrouter.min.js');
 
-console.log(('RouterRouter ' + pkg.version + ' built successfully!').green);
+console.log(colors.green('RouterRouter %s built successfully!'), pkg.version);
