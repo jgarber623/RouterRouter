@@ -4,7 +4,7 @@ I'd love to have your help improving RouterRouter! If you'd like to pitch in, yo
 
 1. Look through open [Issues](https://github.com/jgarber623/RouterRouter/issues).
 2. Review any open [Pull Requests](https://github.com/jgarber623/RouterRouter/pulls).
-3. [Fork RouterRouter](#getting-set-up-to-contribute) and fix an open Issue or add your own feature.
+3. [Fork RouterRouter](#get-set-up-to-contribute) and fix an open Issue or add your own feature.
 4. File new Issues if you have a good idea or see a bug and don't know how to fix it yourself. _Only do this after you've made sure the behavior or problem you're seeing isn't already documented in an open Issue._
 
 I definitely appreciate your interest in (and help improving) RouterRouter. Thanks!
