@@ -1,5 +1,10 @@
 # RouterRouter
 
+[![npm version](https://badge.fury.io/js/routerrouter.svg)](https://badge.fury.io/js/routerrouter)
+[![Build Status](https://travis-ci.org/jgarber623/RouterRouter.svg?branch=master)](https://travis-ci.org/jgarber623/RouterRouter)
+[![Code Climate](https://codeclimate.com/github/jgarber623/RouterRouter/badges/gpa.svg)](https://codeclimate.com/github/jgarber623/RouterRouter)
+[![Test Coverage](https://codeclimate.com/github/jgarber623/RouterRouter/badges/coverage.svg)](https://codeclimate.com/github/jgarber623/RouterRouter/coverage)
+
 RouterRouter is a very basic JavaScript routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-169). Using a modified version of Backbone's routing code, RouterRouter provides Backbone-style route definition while remaining a small, standalone, dependency-free library.
 
 For more on RouterRouter's development, check out the [introductory post](http://sixtwothree.org/posts/finally-introducing-routerrouter-a-javascript-routing-library).
