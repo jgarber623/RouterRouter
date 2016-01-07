@@ -9,7 +9,7 @@
   "scripts": {
     "build": "./scripts/build.js; ./scripts/stats.js",
     "stats": "./scripts/stats.js",
-    "test": "./node_modules/mocha-phantomjs/bin/mocha-phantomjs test/runner.html"
+    "test": "mocha-phantomjs test/runner.html"
   },
   "repository": {
     "type": "git",
