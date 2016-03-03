@@ -23,7 +23,7 @@ var colors = require('colors'),
 		' *  For more about Backbone, visit: http://backbonejs.org\n' +
 		' */\n';
 
-exec('uglifyjs src/routerrouter.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/routerrouter.js');
-exec('uglifyjs src/routerrouter.js --compress --mangle --preamble "' + preamble + '" --output dist/routerrouter.min.js');
+exec('$(npm bin)/uglifyjs src/routerrouter.js --beautify "indent-level=2" --preamble "' + preamble + '" --output dist/routerrouter.js');
+exec('$(npm bin)/uglifyjs src/routerrouter.js --compress --mangle --preamble "' + preamble + '" --output dist/routerrouter.min.js');
 
 console.log(colors.green('RouterRouter %s built successfully!'), pkg.version);
