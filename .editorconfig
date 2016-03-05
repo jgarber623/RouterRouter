@@ -9,7 +9,7 @@ indent_size = 2
 indent_style = space
 trim_trailing_whitespace = true
 
-[*.{html,js,json,md}]
+[*.{html,js,md}]
 insert_final_newline = false
 indent_size = 4
 indent_style = tab
