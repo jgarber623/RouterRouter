@@ -27,7 +27,7 @@ RouterRouter is also really tiny:
 			<td>1,610 bytes</td>
 		</tr>
 		<tr>
-			<th>Minifed and gzipped</th>
+			<th>Minified and gzipped</th>
 			<td>903 bytes</td>
 		</tr>
 	</tbody>
