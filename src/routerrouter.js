@@ -22,40 +22,13 @@
 		// Cached regex for removing a trailing slash.
 		trailingSlash = /\/$/;
 
-	// Bind all defined routes. We have to reverse the order of the routes
-	// here to support behavior where the most general routes can be defined
-	// at the bottom of the route map.
-	var bindRoutes = function(routes) {
-		if (routes) {
-			var route,
-				keys = Object.keys(routes);
-
-			while (typeof (route = keys.pop()) !== 'undefined') {
-				this.route(route, routes[route]);
-			}
-		}
-	};
-
 	// Given a route, and a URL fragment that it matches, return the array of
 	// extracted decoded parameters. Empty or unmatched parameters will be
 	// treated as `null` to normalize cross-browser behavior.
 	var extractParameters = function(route, fragment) {
-		var params = route.exec(fragment).slice(1);
-
-		return params.map(function(param) {
+		return route.exec(fragment).slice(1).map(function(param) {
 			return param ? decodeURIComponent(param) : null;
 		});
-	};
-
-	// Get the cross-browser normalized URL fragment, either from the URL,
-	// the hash, or the override.
-	var getFragment = function(fragment) {
-		return fragment.replace(routeStripper, '').replace(trailingSlash, '');
-	};
-
-	// Method for determining the type of a given object.
-	var isType = function(obj, name) {
-		return Object.prototype.toString.call(obj) === '[object ' + name + ']';
 	};
 
 	// Convert a route string into a regular expression, suitable for matching
@@ -74,7 +47,19 @@
 	var RouterRouter = function(options) {
 		this.options = options || {};
 
-		bindRoutes(this.options.routes);
+		var routes = this.options.routes;
+
+		if (routes) {
+			var route,
+				keys = Object.keys(routes);
+
+			// Bind all defined routes. We have to reverse the order of the routes
+			// here to support behavior where the most general routes can be defined
+			// at the bottom of the route map.
+			while (typeof (route = keys.pop()) !== 'undefined') {
+				this.route(route, routes[route]);
+			}
+		}
 	};
 
 	// Manually bind a single named route to a callback. For example:
@@ -84,11 +69,13 @@
 	//   });
 	//
 	RouterRouter.prototype.route = function(route, name, callback) {
-		if (!isType(route, 'RegExp')) {
+		var fragment = window.location.pathname.replace(routeStripper, '').replace(trailingSlash, '');
+
+		if (!(route instanceof RegExp)) {
 			route = routeToRegExp(route);
 		}
 
-		if (isType(name, 'Function')) {
+		if (typeof name === 'function') {
 			callback = name;
 			name = '';
 		}
@@ -97,14 +84,8 @@
 			callback = this.options[name];
 		}
 
-		var fragment = getFragment(window.location.pathname);
-
-		if (route.test(fragment)) {
-			var args = extractParameters(route, fragment);
-
-			if (isType(callback, 'Function')) {
-				callback.apply(this, args);
-			}
+		if (route.test(fragment) && typeof callback === 'function') {
+			callback.apply(this, extractParameters(route, fragment));
 		}
 
 		return this;
