@@ -11,7 +11,7 @@ For more on RouterRouter's development, check out the [introductory post](http:/
 ### Key Features
 
 - Dependency-free
-- AMD/CommonJS module support
+- AMD/Node module support
 - Uses Backbone's routing API
 
 RouterRouter is also really tiny:
@@ -20,15 +20,15 @@ RouterRouter is also really tiny:
 	<tbody>
 		<tr>
 			<th>Uncompressed</th>
-			<td>2,392 bytes</td>
+			<td>2,372 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified</th>
-			<td>1,491 bytes</td>
+			<td>1,469 bytes</td>
 		</tr>
 		<tr>
 			<th>Minified and gzipped</th>
-			<td>847 bytes</td>
+			<td>835 bytes</td>
 		</tr>
 	</tbody>
 </table>
@@ -130,9 +130,10 @@ RouterRouter doesn't (currently) support the [HTML5 History API](http://diveinto
 
 Credit for the really difficult parts of RouterRouter goes to Jeremy Ashkenas, DocumentCloud, Investigative Reporters & Editors, and everyone else who has contributed code to Backbone.
 
-Special thanks to [@nhunzaker](https://github.com/nhunzaker) for his guidance on testing and to [Viget](http://viget.com/) for their encouragement and commitment to open source projects.
+RouterRouter is written and maintained by [@jgarber623](https://github.com/jgarber623) and is another in a growing line of small, curiously-named JavaScript utilities:
 
-RouterRouter is written and maintained by [@jgarber623](https://github.com/jgarber623).
+- [CashCash](https://github.com/jgarber623/CashCash), a very small DOM library inspired by [jQuery](http://jquery.com/).
+- [RadioRadio](https://github.com/jgarber623/RadioRadio), a very basic [PubSub](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) library.
 
 
 ## License
