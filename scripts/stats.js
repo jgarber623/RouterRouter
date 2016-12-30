@@ -12,9 +12,9 @@ let table = new cliTable({
 });
 
 table.push(
-	{ 'Uncompressed': `${commaNumber(fs.statSync('dist/routerrouter.js').size)} bytes` },
-	{ 'Minified': `${commaNumber(fs.statSync('dist/routerrouter.min.js').size)} bytes` },
-	{ 'Minified + gzipped': `${commaNumber(gzipSize.sync(fs.readFileSync('dist/routerrouter.min.js')))} bytes` }
+	{ 'Uncompressed': `${commaNumber(fs.statSync('./dist/routerrouter.js').size)} bytes` },
+	{ 'Minified': `${commaNumber(fs.statSync('./dist/routerrouter.min.js').size)} bytes` },
+	{ 'Minified + gzipped': `${commaNumber(gzipSize.sync(fs.readFileSync('./dist/routerrouter.min.js')))} bytes` }
 );
 
 console.log(table.toString());

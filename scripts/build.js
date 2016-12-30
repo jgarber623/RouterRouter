@@ -24,7 +24,7 @@ let preamble = `/*!
  */
 `;
 
-exec(`$(npm bin)/uglifyjs src/routerrouter.js --beautify 'indent-level=2' --preamble '${preamble}' --output dist/routerrouter.js`);
-exec(`$(npm bin)/uglifyjs src/routerrouter.js --compress --mangle --preamble '${preamble}' --output dist/routerrouter.min.js`);
+exec(`$(npm bin)/uglifyjs ./src/routerrouter.js --beautify 'indent-level=2' --preamble '${preamble}' --output ./dist/routerrouter.js`);
+exec(`$(npm bin)/uglifyjs ./src/routerrouter.js --compress --mangle --preamble '${preamble}' --output ./dist/routerrouter.min.js`);
 
 console.log(colors.green(`RouterRouter ${pkg.version} built successfully!`));
