@@ -130,7 +130,7 @@ RouterRouter doesn't (currently) support the [HTML5 History API](http://diveinto
 
 Credit for the really difficult parts of RouterRouter goes to Jeremy Ashkenas, DocumentCloud, Investigative Reporters & Editors, and everyone else who has contributed code to Backbone.
 
-RouterRouter is written and maintained by [@jgarber623](https://github.com/jgarber623) and is another in a growing line of small, curiously-named JavaScript utilities:
+RouterRouter is written and maintained by [Jason Garber](https://sixtwothree.org/) and is another in a growing line of small, curiously-named JavaScript utilities:
 
 - [CashCash](https://github.com/jgarber623/CashCash), a very small DOM library inspired by [jQuery](http://jquery.com/).
 - [RadioRadio](https://github.com/jgarber623/RadioRadio), a very basic [PubSub](https://en.wikipedia.org/wiki/Publish–subscribe_pattern) library.
