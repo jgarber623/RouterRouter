@@ -9,15 +9,15 @@ I'd love to have your help improving RouterRouter! If you'd like to pitch in, yo
 
 I definitely appreciate your interest in (and help improving) RouterRouter. Thanks!
 
-
 ## Install development dependencies
 
-RouterRouter's build process uses [npm](https://www.npmjs.com/) and [Node.js](http://nodejs.org/). If you're using a Mac, the easiest way to install npm and Node.js (and plenty of other great tools) is with [Homebrew](http://brew.sh/):
+RouterRouter's build process uses [npm](https://www.npmjs.com) and [Node.js](https://nodejs.org). If you're using a Mac, the easiest way to install npm and Node.js (and plenty of other great tools) is with [Homebrew](https://brew.sh):
 
-	brew install node
+```sh
+brew install node
+```
 
-If you're using a different operating system, use a different package manager, or prefer not to use Homebrew, check out the [Node.js Downloads page](http://nodejs.org/download/).
-
+If you're using a different operating system, use a different package manager, or prefer not to use Homebrew, check out the [Node.js Downloads page](https://nodejs.org/en/download/).
 
 ## Get set up to contribute
 
@@ -32,7 +32,6 @@ Contributing to RouterRouter is pretty straightforward:
 7. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
 8. Create a new Pull Request and I'll give it a look!
 
-
 ## "But what files do I change?!?"
 
 Excellent question. RouterRouter's source code is in the file `src/routerrouter.js`. Make your changes here!
@@ -41,16 +40,15 @@ When you're done working (and before you push your code or issue a pull request)
 
 **Do not directly edit the files in the `dist` folder!**
 
-
 ## Code Style
 
 Code styles are like opinions: Everyone's got one and yours is better than mine. Here's how RouterRouter should be written:
 
-- Use hard tabs for indentation.
+- Use two spaces for indentation.
 - No trailing whitespace and blank lines should have whitespace removed.
 - Prefer single quotes over double quotes unless interpolating.
 - Follow the conventions you see in the existing source code as best as you can.
 
-RouterRouter's formatting guidelines are defined in the `.editorconfig` file which uses the [EditorConfig](http://editorconfig.org/) syntax. There are [a number of great plugins for a variety of editors](http://editorconfig.org/#download) that utilize the settings in the `.editorconfig` file. Using EditorConfig will make your time spent coding a little bit easier.
+RouterRouter's formatting guidelines are defined in the `.editorconfig` file which uses the [EditorConfig](http://editorconfig.org) syntax. There are [a number of great plugins for a variety of editors](http://editorconfig.org/#download) that utilize the settings in the `.editorconfig` file. Using EditorConfig will make your time spent coding a little bit easier.
 
 Your bug fix or feature addition won't be rejected if it runs afoul of any (or all) of these guidelines, but following the guidelines will definitely make everyone's lives a little easier.

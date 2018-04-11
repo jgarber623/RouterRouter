@@ -1,1 +1,3 @@
-**/*{.,-}min.js
+dist/*
+scripts/*
+spec/*

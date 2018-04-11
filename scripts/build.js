@@ -1,30 +1,31 @@
 #!/usr/bin/env node
 
-let colors = require('colors');
-let exec = require('child_process').exec;
-let pkg = require('../package.json');
-let year = new Date().getFullYear();
+const colors = require('colors');
+const exec = require('child_process').exec;
+const pkg = require('../package.json');
 
-let preamble = `/*!
- *  RouterRouter ${pkg.version}
+const basename = 'routerrouter'
+const packageName = 'RouterRouter';
+const releaseYear = 2013;
+
+const preamble = `/*!
+ *  ${packageName} ${pkg.version}
  *
  *  ${pkg.description}
  *
  *  Source code available at: ${pkg.homepage}
  *
- *  Backbone is
- *  (c) 2011-${year} Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ *  Backbone is (c) 2011-2017 Jeremy Ashkenas, DocumentCloud
  *
- *  RouterRouter is
- *  (c) 2013-${year} ${pkg.author.name} (${pkg.author.url})
+ *  ${packageName} is (c) ${releaseYear}-present ${pkg.author.name} (${pkg.author.url})
  *
- *  Like Backbone, RouterRouter may be freely distributed under the ${pkg.license} license.
+ *  ${packageName} may be freely distributed under the ${pkg.license} license.
  *
  *  For more about Backbone, visit: http://backbonejs.org
  */
 `;
 
-exec(`$(npm bin)/uglifyjs ./src/routerrouter.js --beautify 'indent-level=2' --preamble '${preamble}' --output ./dist/routerrouter.js`);
-exec(`$(npm bin)/uglifyjs ./src/routerrouter.js --compress --mangle --preamble '${preamble}' --output ./dist/routerrouter.min.js`);
+exec(`$(npm bin)/uglifyjs src/${basename}.js --beautify 'indent-level=2' --preamble '${preamble}' --output dist/${basename}.js`);
+exec(`$(npm bin)/uglifyjs src/${basename}.js --compress --mangle --preamble '${preamble}' --output dist/${basename}.min.js`);
 
-console.log(colors.green(`RouterRouter ${pkg.version} built successfully!`));
+console.log(colors.green(`${packageName} ${pkg.version} built successfully!`));

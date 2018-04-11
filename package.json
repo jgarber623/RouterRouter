@@ -1,45 +1,44 @@
 {
-  "name": "routerrouter",
+  "name": "@jgarber/routerrouter",
   "version": "1.0.3",
-  "description": "A very basic JavaScript routing library extracted from Backbone’s Router.",
-  "main": "dist/routerrouter.js",
-  "directories": {
-    "test": "./test"
-  },
-  "scripts": {
-    "build": "./scripts/build.js; ./scripts/stats.js",
-    "stats": "./scripts/stats.js",
-    "test": "./scripts/test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jgarber623/RouterRouter.git"
-  },
+  "description": "A very small JavaScript routing library extracted from Backbone’s Router.",
   "keywords": [
     "backbone",
     "javascript",
     "router"
   ],
+  "homepage": "https://github.com/jgarber623/RouterRouter",
+  "bugs": {
+    "url": "https://github.com/jgarber623/RouterRouter/issues"
+  },
+  "license": "MIT",
   "author": {
     "name": "Jason Garber",
     "email": "jason@sixtwothree.org",
     "url": "http://sixtwothree.org"
   },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jgarber623/RouterRouter/issues"
+  "main": "dist/routerrouter.js",
+  "directories": {
+    "example": "./example"
   },
-  "homepage": "https://github.com/jgarber623/RouterRouter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgarber623/RouterRouter.git"
+  },
+  "scripts": {
+    "build": "./scripts/build.js && ./scripts/stats.js",
+    "stats": "./scripts/stats.js",
+    "test": "npm run test:lint",
+    "test:lint": "$(npm bin)/eslint ."
+  },
   "devDependencies": {
-    "chai": "^3.5.0",
     "cli-table": "^0.3.1",
-    "codeclimate-test-reporter": "^0.4.0",
-    "colors": "^1.1.2",
-    "comma-number": "^1.1.0",
-    "gzip-size": "^3.0.0",
-    "mocha": "^3.2.0",
-    "mocha-phantomjs-core": "^2.1.1",
-    "phantomjs-prebuilt": "^2.1.14",
-    "uglify-js": "^2.7.5"
+    "colors": "^1.2.1",
+    "comma-number": "^2.0.0",
+    "eslint": "^4.19.1",
+    "gzip-size": "^4.1.0",
+    "jasmine": "^3.1.0",
+    "puppeteer": "^1.2.0",
+    "uglify-js": "^2.8.29"
   }
 }

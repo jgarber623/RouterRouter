@@ -1,25 +1,19 @@
+<!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<title>RouterRouter: Tests</title>
+  <title>RouterRouter: Specs</title>
 
-	<link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+  <link rel="shortcut icon" href="../node_modules/jasmine-core/images/jasmine_favicon.png">
+  <link rel="stylesheet" href="../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
+
+  <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+  <script src="../src/routerrouter.js"></script>
+  <script src="./spec.js"></script>
 </head>
 <body>
-
-	<div id="mocha"></div>
-
-	<script src="../node_modules/mocha/mocha.js"></script>
-	<script src="../node_modules/chai/chai.js"></script>
-	<script>mocha.setup('bdd');</script>
-	<script src="../src/routerrouter.js"></script>
-	<script src="spec.js"></script>
-
-	<script>
-		// Only tests run in real browser, injected script run if options.run == true
-		(window.mochaPhantomJS ? mochaPhantomJS : mocha).run();
-	</script>
-
 </body>
 </html>

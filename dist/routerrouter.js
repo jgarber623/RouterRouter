@@ -1,17 +1,15 @@
 /*!
  *  RouterRouter 1.0.3
  *
- *  A very basic JavaScript routing library extracted from Backbone’s Router.
+ *  A very small JavaScript routing library extracted from Backbone’s Router.
  *
  *  Source code available at: https://github.com/jgarber623/RouterRouter
  *
- *  Backbone is
- *  (c) 2011-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ *  Backbone is (c) 2011-2017 Jeremy Ashkenas, DocumentCloud
  *
- *  RouterRouter is
- *  (c) 2013-2016 Jason Garber (http://sixtwothree.org)
+ *  RouterRouter is (c) 2013-present Jason Garber (http://sixtwothree.org)
  *
- *  Like Backbone, RouterRouter may be freely distributed under the MIT license.
+ *  RouterRouter may be freely distributed under the MIT license.
  *
  *  For more about Backbone, visit: http://backbonejs.org
  */
@@ -24,7 +22,7 @@
   } else {
     root.RouterRouter = factory();
   }
-})(this, function() {
+})(typeof self !== "undefined" ? self : this, function() {
   "use strict";
   var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g, namedParam = /(\(\?)?:\w+/g, optionalParam = /\((.*?)\)/g, splatParam = /\*\w+/g, routeStripper = /^[#\/]|\s+$/g, trailingSlash = /\/$/;
   var extractParameters = function(route, fragment) {
