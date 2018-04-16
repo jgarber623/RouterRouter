@@ -28,8 +28,9 @@
   "scripts": {
     "build": "./scripts/build.js && ./scripts/stats.js",
     "stats": "./scripts/stats.js",
-    "test": "npm run test:lint",
-    "test:lint": "$(npm bin)/eslint ."
+    "test": "npm run test:lint && npm run test:specs",
+    "test:lint": "$(npm bin)/eslint .",
+    "test:specs": "node ./spec/console-runner.js file:///`pwd`/spec/runner.html"
   },
   "devDependencies": {
     "cli-table": "^0.3.1",
