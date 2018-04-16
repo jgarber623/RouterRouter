@@ -46,6 +46,7 @@
 
   var RouterRouter = function(options) {
     this.options = options || {};
+    this.location = window.location;
 
     var routes = this.options.routes;
 
@@ -69,7 +70,7 @@
   //   });
   //
   RouterRouter.prototype.route = function(route, name, callback) {
-    var fragment = window.location.pathname.replace(routeStripper, '').replace(trailingSlash, '');
+    var fragment = this.location.pathname.replace(routeStripper, '').replace(trailingSlash, '');
 
     if (!(route instanceof RegExp)) {
       route = routeToRegExp(route);
