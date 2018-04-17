@@ -70,7 +70,9 @@
   //   });
   //
   RouterRouter.prototype.route = function(route, name, callback) {
-    var fragment = this.location.pathname.replace(routeStripper, '').replace(trailingSlash, '');
+    var fragment = decodeURIComponent(this.location.pathname)
+      .replace(routeStripper, '')
+      .replace(trailingSlash, '');
 
     if (!(route instanceof RegExp)) {
       route = routeToRegExp(route);
