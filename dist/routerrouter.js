@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter 1.0.3
+ *  RouterRouter 2.0.0
  *
  *  A very small JavaScript routing library extracted from Backbone’s Router.
  *
@@ -24,44 +24,38 @@
   }
 })(typeof self !== "undefined" ? self : this, function() {
   "use strict";
-  var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g, namedParam = /(\(\?)?:\w+/g, optionalParam = /\((.*?)\)/g, splatParam = /\*\w+/g, routeStripper = /^[#\/]|\s+$/g, trailingSlash = /\/$/;
-  var extractParameters = function(route, fragment) {
-    return route.exec(fragment).slice(1).map(function(param) {
-      return param ? decodeURIComponent(param) : null;
+  var extractParameters = function(route, pathname) {
+    return route.exec(pathname).slice(1).map(function(parameter) {
+      return parameter ? decodeURIComponent(parameter) : null;
     });
   };
   var routeToRegExp = function(route) {
-    route = route.replace(escapeRegExp, "\\$&").replace(optionalParam, "(?:$1)?").replace(namedParam, function(match, optional) {
-      return optional ? match : "([^/?]+)";
-    }).replace(splatParam, "([^?]*?)");
-    return new RegExp("^" + route + "(?:\\?([\\s\\S]*))?$");
+    route = route.replace(/[$.|]+?/g, "\\$&").replace(/\((.+?)\)/g, "(?:$1)?").replace(/:\w+/g, "([^/]+)").replace(/\*(\w+)?/g, "(.+?)");
+    return new RegExp("^" + route + "$");
   };
   var RouterRouter = function(options) {
     this.options = options || {};
     var routes = this.options.routes;
     if (routes) {
-      var route, keys = Object.keys(routes);
-      while (typeof (route = keys.pop()) !== "undefined") {
+      Object.keys(routes).forEach(function(route) {
         this.route(route, routes[route]);
-      }
+      }.bind(this));
     }
   };
-  RouterRouter.prototype.route = function(route, name, callback) {
-    var fragment = window.location.pathname.replace(routeStripper, "").replace(trailingSlash, "");
-    if (!(route instanceof RegExp)) {
-      route = routeToRegExp(route);
+  RouterRouter.prototype = {
+    location: window.location,
+    route: function(route, action) {
+      var pathname = decodeURIComponent(this.location.pathname);
+      if (!(route instanceof RegExp)) {
+        route = routeToRegExp(route);
+      }
+      if (typeof action === "string") {
+        action = this.options[action];
+      }
+      if (route.test(pathname) && typeof action === "function") {
+        action.apply(this, extractParameters(route, pathname));
+      }
     }
-    if (typeof name === "function") {
-      callback = name;
-      name = "";
-    }
-    if (!callback) {
-      callback = this.options[name];
-    }
-    if (route.test(fragment) && typeof callback === "function") {
-      callback.apply(this, extractParameters(route, fragment));
-    }
-    return this;
   };
   return RouterRouter;
 });

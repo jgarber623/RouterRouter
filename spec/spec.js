@@ -1,137 +1,176 @@
 describe('RouterRouter', () => {
-  let callback;
   let router;
+  let action;
 
-  it('is a function', () => {
-    expect(typeof RouterRouter).toBe('function');
+  beforeAll(() => {
+    router = new RouterRouter();
   });
 
-  describe('.route()', () => {
-    beforeAll(() => {
-      router = new RouterRouter();
+  beforeEach(() => {
+    action = jasmine.createSpy('action');
+  });
+
+  describe('string matching', () => {
+    it('matches a slash', () => {
+      router.location = new Location('http://example.com');
+      router.route('/', action);
+
+      expect(action).toHaveBeenCalled();
     });
 
-    beforeEach(() => {
-      callback = jasmine.createSpy('callback');
+    it('matches a string', () => {
+      router.location = new Location('http://example.com/foo');
+      router.route('/foo', action);
+
+      expect(action).toHaveBeenCalled();
     });
 
-    it('is a function', () => {
-      expect(typeof RouterRouter.prototype.route).toBe('function');
+    it('treats trailing slashes as unique URLs', () => {
+      router.location = new Location('http://example.com/foo/');
+      router.route('/foo', action);
+
+      expect(action).not.toHaveBeenCalled();
     });
 
-    describe('string matching', () => {
-      it('matches an empty string', () => {
-        router.location = new Location('http://example.com');
-        router.route('', callback);
+    it('matches a string containing special characters', () => {
+      router.location = new Location('http://example.com/$foo/~bar/@=|biz!buz.html');
+      router.route('/$foo/~bar/@=|biz!buz.html', action);
 
-        expect(callback).toHaveBeenCalled();
-      });
-
-      it('matches a string', () => {
-        router.location = new Location('http://example.com/foo');
-        router.route('foo', callback);
-
-        expect(callback).toHaveBeenCalled();
-      });
-
-      it('matches a string containing Unicode characters', () => {
-        router.location = new Location('http://example.com/motleycrüe');
-        router.route('motleycrüe', callback);
-
-        expect(callback).toHaveBeenCalled();
-      });
-
-      it('matches a string containing emoji characters', () => {
-        router.location = new Location('http://example.com/🤔');
-        router.route('🤔', callback);
-
-        expect(callback).toHaveBeenCalled();
-      });
-
-      it('matches a string containing newline characters', () => {
-        router.location = new Location('http://example.com/foo%0Abar')
-        router.route('foo\nbar', callback);
-
-        expect(callback).toHaveBeenCalled();
-      });
+      expect(action).toHaveBeenCalled();
     });
 
-    describe('named parameter matching', () => {
-      it('matches a single named parameter', () => {
-        router.location = new Location('http://example.com/1');
-        router.route(':foo', callback);
+    it('matches a string containing encoded characters', () => {
+      router.location = new Location('http://example.com/foo%2Fbar')
+      router.route('/foo/bar', action);
 
-        expect(callback).toHaveBeenCalledWith('1');
-      });
-
-      it('matches multiple named parameters', () => {
-        router.location = new Location('http://example.com/1/2/3');
-        router.route(':foo/:bar/:biz', callback);
-
-        expect(callback).toHaveBeenCalledWith('1', '2', '3');
-      });
+      expect(action).toHaveBeenCalled();
     });
 
-    describe('wildcard parameter matching', () => {
-      it('matches a single wildcard parameter', () => {
-        router.location = new Location('http://example.com/path/to/some/file.txt');
-        router.route('path/*foo', callback);
+    it('matches a string containing Unicode characters', () => {
+      router.location = new Location('http://example.com/föö');
+      router.route('/föö', action);
 
-        expect(callback).toHaveBeenCalledWith('to/some/file.txt');
-      });
-
-      it('matches multiple wildcard parameters', () => {
-        router.location = new Location('http://example.com/path/to/some/file.txt');
-        router.route('path/*foo/*bar', callback);
-
-        expect(callback).toHaveBeenCalledWith('to', '/some/file.txt');
-      });
+      expect(action).toHaveBeenCalled();
     });
 
-    describe('optional parameters matching', () => {
-      it('matches a single optional parameter', () => {
-        router.location = new Location('http://example.com/blog/sample-post-title');
-        router.route(':foo(/:bar)', callback);
+    it('matches a string containing emoji characters', () => {
+      router.location = new Location('http://example.com/🤔');
+      router.route('/🤔', action);
 
-        expect(callback).toHaveBeenCalledWith('blog', 'sample-post-title');
-      });
-
-      it('matches multiple optional parameters', () => {
-        router.location = new Location('http://example.com/blog/sample-post-title/comments');
-        router.route(':foo(/:bar)(/:biz)', callback);
-
-        expect(callback).toHaveBeenCalledWith('blog', 'sample-post-title', 'comments');
-      });
-
-      it('handles missing optional parameters', () => {
-        router.location = new Location('http://example.com/blog');
-        router.route(':foo(/:bar)', callback);
-
-        expect(callback).toHaveBeenCalledWith('blog', null);
-      });
+      expect(action).toHaveBeenCalled();
     });
 
-    describe('regular expression matching', () => {
-      it('matches a single capture group', () => {
-        router.location = new Location('http://example.com/foo/bar');
-        router.route(new RegExp(/^(.*?)\/bar$/), callback);
+    it('matches a string containing newline characters', () => {
+      router.location = new Location('http://example.com/foo%0Abar')
+      router.route('/foo\nbar', action);
 
-        expect(callback).toHaveBeenCalledWith('foo');
-      });
+      expect(action).toHaveBeenCalled();
+    });
+  });
 
-      it('matches multiple capture groups', () => {
-        router.location = new Location('http://example.com/foo/bar');
-        router.route(new RegExp(/^(.*?)\/(.*?)$/), callback);
+  describe('named parameter matching', () => {
+    it('matches a single named parameter', () => {
+      router.location = new Location('http://example.com/posts/1');
+      router.route('/posts/:id', action);
 
-        expect(callback).toHaveBeenCalledWith('foo', 'bar')
-      });
+      expect(action).toHaveBeenCalledWith('1');
+    });
 
-      it('ignores non-capture groups', () => {
-        router.location = new Location('http://example.com/foo/bar/biz');
-        router.route(new RegExp(/^(.*?)\/(?:.*?)\/(.*?)$/), callback);
+    it('matches multiple named parameters', () => {
+      router.location = new Location('http://example.com/posts/1');
+      router.route('/:section/:id', action);
 
-        expect(callback).toHaveBeenCalledWith('foo', 'biz');
-      });
+      expect(action).toHaveBeenCalledWith('posts', '1');
+    });
+
+    it('matches a complex named parameter', () => {
+      router.location = new Location('http://example.com/posts/a-sample-post-name');
+      router.route('/posts/a-:named_parameter-post-name', action);
+
+      expect(action).toHaveBeenCalledWith('sample');
+    });
+
+    it('does not match a named parameter containing invalid characters', () => {
+      router.location = new Location('http://example.com/posts/1');
+      router.route('/posts/:🤔', action);
+
+      expect(action).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('wildcard parameter matching', () => {
+    it('matches a single wildcard parameter', () => {
+      router.location = new Location('http://example.com/foo/bar/biz/baz');
+      router.route('/*wildcard_parameter/baz', action);
+
+      expect(action).toHaveBeenCalledWith('foo/bar/biz');
+    });
+
+    it('matches multiple wildcard parameters', () => {
+      router.location = new Location('http://example.com/foo/bar/biz/baz');
+      router.route('/foo/*/biz/*', action);
+
+      expect(action).toHaveBeenCalledWith('bar', 'baz');
+    });
+  });
+
+  describe('optional parameter matching', () => {
+    it('matches a single optional parameter', () => {
+      router.location = new Location('http://example.com/foo');
+      router.route('/foo(/)', action);
+
+      expect(action).toHaveBeenCalled();
+    });
+
+    it('matches multiple optional parameters', () => {
+      router.location = new Location('http://example.com/foo/bar/biz');
+      router.route('/foo(/bar)(/biz)', action);
+
+      expect(action).toHaveBeenCalled();
+    });
+
+    it('matches a single optional named parameter', () => {
+      router.location = new Location('http://example.com/foo/bar');
+      router.route('/foo(/:optional_parameter)', action);
+
+      expect(action).toHaveBeenCalledWith('bar');
+    });
+
+    it('matches multiple optional named parameters', () => {
+      router.location = new Location('http://example.com/foo');
+      router.route('(/:optional_parameter_1)(/:optional_parameter_2)', action);
+
+      expect(action).toHaveBeenCalledWith('foo', null);
+    });
+
+    it('does not match missing optional parameters', () => {
+      router.location = new Location('http://example.com/foo');
+      router.route('(/bar)/foo(/biz)', action);
+
+      expect(action).toHaveBeenCalled();
+    });
+  });
+
+  describe('regular expression matching', () => {
+    it('matches a single group', () => {
+      router.location = new Location('http://example.com/foo/bar');
+      router.route(new RegExp('^/(.*?)/.*$'), action);
+
+      expect(action).toHaveBeenCalledWith('foo');
+    });
+
+    it('matches multiple groups', () => {
+      router.location = new Location('http://example.com/foo/bar');
+      router.route(new RegExp('^/(.*?)/(.*?)$'), action);
+
+      expect(action).toHaveBeenCalledWith('foo', 'bar')
+    });
+
+    it('does not match passive groups', () => {
+      router.location = new Location('http://example.com/foo/bar/biz');
+      router.route(new RegExp('^/(.*?)/(?:.*?)/(.*?)$'), action);
+
+      expect(action).toHaveBeenCalledWith('foo', 'biz');
     });
   });
 });
