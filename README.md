@@ -3,7 +3,6 @@
 **A very small JavaScript routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-185).**
 
 [![npm](https://img.shields.io/npm/v/@jgarber/routerrouter.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/routerrouter)
-[![Bower](https://img.shields.io/bower/v/routerrouter.svg?style=for-the-badge)](https://bower.io/search/?q=routerrouter)
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/routerrouter.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/routerrouter)
 [![Build](https://img.shields.io/travis/jgarber623/RouterRouter.svg?style=for-the-badge)](https://travis-ci.org/jgarber623/RouterRouter)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/RouterRouter.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/RouterRouter)
@@ -22,15 +21,15 @@ RouterRouter is also really tiny:
 <table>
   <tbody>
     <tr>
-      <th>Uncompressed</th>
+      <th align="left">Uncompressed</th>
       <td>1,974 bytes</td>
     </tr>
     <tr>
-      <th>Minified</th>
+      <th align="left">Minified</th>
       <td>1,305 bytes</td>
     </tr>
     <tr>
-      <th>Minified and gzipped</th>
+      <th align="left">Minified and gzipped</th>
       <td>727 bytes</td>
     </tr>
   </tbody>
