@@ -1,38 +1,28 @@
 /*!
- *  RouterRouter 2.0.0
+ *  RouterRouter v2.1.0
  *
  *  A very small JavaScript routing library extracted from Backbone’s Router.
  *
  *  Source code available at: https://github.com/jgarber623/RouterRouter
  *
- *  Backbone is (c) 2011-2017 Jeremy Ashkenas, DocumentCloud
- *
- *  RouterRouter is (c) 2013-present Jason Garber (http://sixtwothree.org)
+ *  (c) 2013-present Jason Garber (http://sixtwothree.org)
  *
  *  RouterRouter may be freely distributed under the MIT license.
- *
- *  For more about Backbone, visit: http://backbonejs.org
  */
 
-(function(root, factory) {
-  if (typeof define === "function" && define.amd) {
-    define([], factory);
-  } else if (typeof module === "object" && module.exports) {
-    module.exports = factory();
-  } else {
-    root.RouterRouter = factory();
-  }
-})(typeof self !== "undefined" ? self : this, function() {
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global.RouterRouter = factory();
+})(this, function() {
   "use strict";
-  var extractParameters = function(route, pathname) {
+  function extractParameters(route, pathname) {
     return route.exec(pathname).slice(1).map(function(parameter) {
       return parameter ? decodeURIComponent(parameter) : null;
     });
-  };
-  var routeToRegExp = function(route) {
+  }
+  function routeToRegExp(route) {
     route = route.replace(/[$.|]+?/g, "\\$&").replace(/\((.+?)\)/g, "(?:$1)?").replace(/:\w+/g, "([^/]+)").replace(/\*(\w+)?/g, "(.+?)");
     return new RegExp("^" + route + "$");
-  };
+  }
   var RouterRouter = function(options) {
     this.options = options || {};
     var routes = this.options.routes;

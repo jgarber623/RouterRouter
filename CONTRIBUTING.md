@@ -3,9 +3,9 @@
 I'd love to have your help improving RouterRouter! If you'd like to pitch in, you can do so in a number of ways:
 
 1. Look through open [Issues](https://github.com/jgarber623/RouterRouter/issues).
-2. Review any open [Pull Requests](https://github.com/jgarber623/RouterRouter/pulls).
-3. [Fork RouterRouter](#get-set-up-to-contribute) and fix an open Issue or add your own feature.
-4. File new Issues if you have a good idea or see a bug and don't know how to fix it yourself. _Only do this after you've made sure the behavior or problem you're seeing isn't already documented in an open Issue._
+1. Review any open [Pull Requests](https://github.com/jgarber623/RouterRouter/pulls).
+1. [Fork RouterRouter](#get-set-up-to-contribute) and fix an open Issue or add your own feature.
+1. File new Issues if you have a good idea or see a bug and don't know how to fix it yourself. _Only do this after you've made sure the behavior or problem you're seeing isn't already documented in an open Issue._
 
 I definitely appreciate your interest in (and help improving) RouterRouter. Thanks!
 
@@ -24,15 +24,16 @@ If you're using a different operating system, use a different package manager, o
 Contributing to RouterRouter is pretty straightforward:
 
 1. Fork the RouterRouter repo and clone it.
-2. Install development dependencies by running `npm install` from the root of the project.
-3. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
-4. _Write some code!_
-5. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `npm test`.
-6. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
-7. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
-8. Create a new Pull Request and I'll give it a look!
+1. Install development dependencies by running `npm install` from the root of the project.
+1. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
+1. Run `npm start` which instructs [Rollup](https://rollupjs.org) to watch `src/routerrouter.js` for changes and automatically exports built files to the `dist` folder.
+1. _Write some code!_
+1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `npm test`.
+1. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
+1. Push the branch to your fork of RouterRouter: `git push origin your-descriptive-branch-name`.
+1. Create a new Pull Request and I'll give it a look!
 
-## "But what files do I change?!?"
+## "But which files do I change?!?"
 
 Excellent question. RouterRouter's source code is in the file `src/routerrouter.js`. Make your changes here!
 

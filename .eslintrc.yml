@@ -1,10 +1,9 @@
+extends: 'eslint:recommended'
+parserOptions:
+  sourceType: module
 env:
   browser: true
   es6: true
-extends: 'eslint:recommended'
-globals:
-  define: true
-  module: true
 rules:
   indent:
     - error
