@@ -18,11 +18,11 @@ Using a modified version of Backbone's routing code, RouterRouter provides Backb
 
 RouterRouter is also really tiny:
 
-| Format                 | File Size   | Gzipped Size |
-|:-----------------------|:------------|:-------------|
-| Uncompressed (module)  | 1,439 bytes | 697 bytes    |
-| Uncompressed (browser) | 1,756 bytes | 793 bytes    |
-| Minified (browser)     | 1,138 bytes | 646 bytes    |
+| Format                 | File Size   | Minified Size | Gzipped Size |
+|:-----------------------|:------------|:--------------|:-------------|
+| Uncompressed (module)  | 1,439 bytes | 731 bytes     | 408 bytes    |
+| Uncompressed (browser) | 1,786 bytes | 824 bytes     | 450 bytes    |
+| Minified (browser)     | 1,148 bytes | 824 bytes     | 450 bytes    |
 
 ## Getting RouterRouter
 
