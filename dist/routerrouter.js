@@ -1,5 +1,5 @@
 /*!
- *  RouterRouter v2.1.0
+ *  RouterRouter v3.0.0
  *
  *  A very small JavaScript routing library extracted from Backbone’s Router.
  *
@@ -13,30 +13,24 @@
 (function(global, factory) {
   typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = global || self, 
   global.RouterRouter = factory());
-})(this, function() {
+})(this, (function() {
   "use strict";
-  function extractParameters(route, pathname) {
-    return route.exec(pathname).slice(1).map(function(parameter) {
-      return parameter ? decodeURIComponent(parameter) : null;
-    });
-  }
-  function routeToRegExp(route) {
+  const extractParameters = (route, pathname) => route.exec(pathname).slice(1).map(parameter => parameter ? decodeURIComponent(parameter) : null);
+  const routeToRegExp = route => {
     route = route.replace(/[$.|]+?/g, "\\$&").replace(/\((.+?)\)/g, "(?:$1)?").replace(/:\w+/g, "([^/]+)").replace(/\*(\w+)?/g, "(.+?)");
-    return new RegExp("^" + route + "$");
-  }
-  var RouterRouter = function(options) {
-    this.options = options || {};
-    var routes = this.options.routes;
-    if (routes) {
-      Object.keys(routes).forEach(function(route) {
-        this.route(route, routes[route]);
-      }.bind(this));
-    }
+    return new RegExp(`^${route}$`);
   };
-  RouterRouter.prototype = {
-    location: window.location,
-    route: function(route, action) {
-      var pathname = decodeURIComponent(this.location.pathname);
+  class RouterRouter {
+    constructor(options = {}) {
+      this.options = options;
+      this.location = window.location;
+      const routes = this.options.routes;
+      if (routes) {
+        Object.keys(routes).forEach(route => this.route(route, routes[route]));
+      }
+    }
+    route(route, action) {
+      const pathname = decodeURIComponent(this.location.pathname);
       if (!(route instanceof RegExp)) {
         route = routeToRegExp(route);
       }
@@ -47,6 +41,6 @@
         action.apply(this, extractParameters(route, pathname));
       }
     }
-  };
+  }
   return RouterRouter;
-});
+}));
