@@ -1,15 +1,15 @@
-// Given a regexp'ed `route` and a `path`, return the array of extracted
+// Given a RegExp'ed `route` and a `path`, return the array of extracted
 // and decoded parameters. Empty or unmatched parameters will be treated
 // as `null` to normalize cross-browser behavior.
-function extractParameters(route, pathname) {
-  return route.exec(pathname).slice(1).map(function(parameter) {
+const extractParameters = (route, pathname) => {
+  return route.exec(pathname).slice(1).map(parameter => {
     return parameter ? decodeURIComponent(parameter) : null;
   });
-}
+};
 
 // Convert a route string into a regular expression suitable for matching
 // against the current location's `pathname`.
-function routeToRegExp(route) {
+const routeToRegExp = route => {
   // escape RegExp reserved characters
   route = route.replace(/[$.|]+?/g, '\\$&')
     // replace optional parameters with RegExp
@@ -19,24 +19,31 @@ function routeToRegExp(route) {
     // replace wildcard parameters with RegExp
     .replace(/\*(\w+)?/g, '(.+?)');
 
-  return new RegExp('^' + route + '$');
-}
-
-var RouterRouter = function(options) {
-  this.options = options || {};
-
-  var routes = this.options.routes;
-
-  if (routes) {
-    Object.keys(routes).forEach(function(route) {
-      this.route(route, routes[route]);
-    }.bind(this));
-  }
+  return new RegExp(`^${route}$`);
 };
 
-RouterRouter.prototype = {
-  // Capture current location for internal use.
-  location: window.location,
+export default class RouterRouter {
+  // Bind multiple routes to actions.
+  //
+  //   new RouterRouter({
+  //     routes: {
+  //       '/': () => {
+  //         console.log('This route matches the root URL');
+  //       },
+  //     }
+  //   });
+  constructor(options = {}) {
+    this.options = options;
+    this.location = window.location;
+
+    const routes = this.options.routes;
+
+    if (routes) {
+      Object.keys(routes).forEach(route => {
+        return this.route(route, routes[route]);
+      });
+    }
+  }
 
   // Manually bind a single route to an action.
   //
@@ -44,8 +51,8 @@ RouterRouter.prototype = {
   //     console.log(query, page);
   //   });
   //
-  route: function(route, action) {
-    var pathname = decodeURIComponent(this.location.pathname);
+  route(route, action) {
+    const pathname = decodeURIComponent(this.location.pathname);
 
     if (!(route instanceof RegExp)) {
       route = routeToRegExp(route);
@@ -59,6 +66,4 @@ RouterRouter.prototype = {
       action.apply(this, extractParameters(route, pathname));
     }
   }
-};
-
-export default RouterRouter;
+}
