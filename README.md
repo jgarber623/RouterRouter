@@ -14,15 +14,15 @@ Using a modified version of Backbone's routing code, RouterRouter provides Backb
 
 - Inspired by Backbone's routing API
 - Dependency-free
-- AMD/Node module support
+- ES2015/AMD/Node module support
 
 RouterRouter is also really tiny:
 
 | Format                 | File Size   | Minified Size | Gzipped Size |
 |:-----------------------|:------------|:--------------|:-------------|
-| Uncompressed (module)  | 1,439 bytes | 731 bytes     | 408 bytes    |
-| Uncompressed (browser) | 1,786 bytes | 824 bytes     | 450 bytes    |
-| Minified (browser)     | 1,148 bytes | 824 bytes     | 450 bytes    |
+| Uncompressed (module)  | 1,358 bytes | 968 bytes     | 583 bytes    |
+| Uncompressed (browser) | 1,696 bytes | 1,067 bytes   | 640 bytes    |
+| Minified (browser)     | 1,071 bytes | 1,067 bytes   | 640 bytes    |
 
 ## Getting RouterRouter
 
@@ -40,9 +40,9 @@ You've got a couple options for adding RouterRouter to your project:
 A basic example, matching a route:
 
 ```js
-var router = new RouterRouter();
+const router = new RouterRouter();
 
-router.route('/posts', function() { // matches https://example.com/posts
+router.route('/posts', () => { // matches https://example.com/posts
   console.log('Hello!');
 });
 ```
@@ -50,9 +50,9 @@ router.route('/posts', function() { // matches https://example.com/posts
 Another example, this time using a named parameter to match a route:
 
 ```js
-var router = new RouterRouter();
+const router = new RouterRouter();
 
-router.route('/posts/:slug', function(slug) { // matches https://example.com/posts/hello-world
+router.route('/posts/:slug', (slug) => { // matches https://example.com/posts/hello-world
   console.log(slug); // logs 'hello-world'
 });
 ```
@@ -64,11 +64,11 @@ RouterRouter supports a number of different matchers which are outlined below in
 A more complex example, demonstrating an alternative method of defining routes and actions:
 
 ```js
-var router = new RouterRouter({
+const router = new RouterRouter({
   // Routes are defined in the `routes` object:
   routes: {
     // Actions may be defined inline:
-    '/': function() {
+    '/': () => {
       console.log('This route matches the root URL');
     },
 
@@ -80,12 +80,12 @@ var router = new RouterRouter({
     '/posts/:year/:month/:slug', 'postPageAction'
   },
 
-  postPageAction: function(year, month, slug) {
+  postPageAction: (year, month, slug) => {
     // Logs strings like '2018', '06', 'hello-world'
     console.log(year, month, slug);
   },
 
-  postsPageAction: function() {
+  postsPageAction: () => {
     console.log('This route matches the /posts URL');
   }
 });
@@ -144,13 +144,13 @@ RouterRouter supports route definitions using [regular expressions](https://deve
 **Pro Tip:** Routes defined using regular expressions are not limited to matching the _entire_ value of `window.location.pathname` and therefore do not need to begin with a slash (`/`). This feature can be used to interesting effect.
 
 ```js
-var router = new RouterRouter();
+const router = new RouterRouter();
 
-router.route(/\/comments\/?$/, function() {
+router.route(/\/comments\/?$/, () => {
   console.log('This route matches URLs ending in /comments or /comments/');
 });
 
-router.route(/^\/(links|photos|posts)\/(?:.*)$/, function(section) {
+router.route(/^\/(links|photos|posts)\/(?:.*)$/, (section) => {
   // Logs 'links', 'photos', or 'posts'
   console.log(section);
 });
@@ -158,18 +158,12 @@ router.route(/^\/(links|photos|posts)\/(?:.*)$/, function(section) {
 
 ## Browser Support
 
-RouterRouter works in all modern browsers. The library makes use of several new(ish) JavaScript methods, including:
+RouterRouter works in modern browsers. The library makes use of several new(ish) JavaScript methods, including:
 
+- Arrow function expressions ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
+- Classes ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes))
 - `Object.keys()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys))
 - `Array.map()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map))
-
-Internet Explorer added native support for these features in version 9. To avoid throwing JavaScript errors in browsers that don't support this method, you can [cut the mustard](http://responsivenews.co.uk/post/18948466399/cutting-the-mustard):
-
-```js
-if (Object.keys && Array.map) {
-  // Your scripts here…
-}
-```
 
 RouterRouter, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
 
@@ -178,7 +172,7 @@ RouterRouter, in an effort to remain as lightweight and dependency-free as possi
 RouterRouter matches the portion of a URL returned by `window.location.pathname`. This _does not_ include other aspects of [the `Location` interface](https://developer.mozilla.org/en-US/docs/Web/API/location) like query parameters (e.g. `?search=why+does+the+sun+shine`). Within an action, the `Location` interface may be used directly (`window.location`) or indirectly:
 
 ```js
-var router = new RouterRouter();
+const router = new RouterRouter();
 
 // Logs the internally cached version of `window.location`
 console.log(router.location);
