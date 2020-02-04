@@ -21,7 +21,8 @@
     "dist"
   ],
   "main": "dist/routerrouter.js",
-  "module": "dist/routerrouter.es.js",
+  "browser": "dist/routerrouter.min.js",
+  "module": "dist/routerrouter.mjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/jgarber623/RouterRouter.git"
