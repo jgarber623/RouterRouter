@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1.0
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - node/test:
+          matrix:
+            parameters:
+              version:
+                - "10.23-browsers"
+                - "12.20-browsers"
+                - "14.15-browsers"
+                - "15.6-browsers"

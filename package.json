@@ -28,11 +28,11 @@
     "url": "https://github.com/jgarber623/RouterRouter.git"
   },
   "scripts": {
-    "build": "npx rollup --config",
+    "build": "rollup --config",
     "pretest": "npm run build",
-    "start": "npx rollup --config --watch",
-    "test": "npx npm-run-all test:*",
-    "test:lint": "npx eslint .",
+    "start": "rollup --config --watch",
+    "test": "npm-run-all test:*",
+    "test:lint": "eslint .",
     "test:specs": "node spec/console-runner.js file:///`pwd`/spec/runner.html"
   },
   "devDependencies": {

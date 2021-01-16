@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/@jgarber/routerrouter.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/routerrouter)
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/routerrouter.svg?style=for-the-badge)](https://www.npmjs.com/package/@jgarber/routerrouter)
-[![Build](https://img.shields.io/travis/com/jgarber623/RouterRouter.svg?style=for-the-badge)](https://travis-ci.com/github/jgarber623/RouterRouter)
+[![Build](https://img.shields.io/circleci/build/github/jgarber623/RouterRouter?style=for-the-badge)](https://app.circleci.com/pipelines/github/jgarber623/RouterRouter)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/RouterRouter.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/RouterRouter)
 [![Coverage](https://img.shields.io/codeclimate/coverage/jgarber623/RouterRouter.svg?style=for-the-badge)](https://codeclimate.com/github/jgarber623/RouterRouter)
 
