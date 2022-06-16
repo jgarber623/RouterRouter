@@ -29,7 +29,7 @@
     "test": "node spec/console-runner.js file:///`pwd`/spec/runner.html"
   },
   "devDependencies": {
-    "eslint": "^8.1.0",
+    "@jgarber/eslint-config": "*",
     "jasmine": "^3.9.0",
     "puppeteer": "^13.0.1",
     "rollup": "^2.58.0",
