@@ -16,14 +16,6 @@ Using a modified version of Backbone's routing code, RouterRouter provides Backb
 - Dependency-free
 - ES2015/AMD/Node module support
 
-RouterRouter is also really tiny:
-
-| Format                 | File Size   | Minified Size | Gzipped Size |
-|:-----------------------|:------------|:--------------|:-------------|
-| Uncompressed (module)  | 1,358 bytes | 968 bytes     | 583 bytes    |
-| Uncompressed (browser) | 1,696 bytes | 1,067 bytes   | 640 bytes    |
-| Minified (browser)     | 1,071 bytes | 1,067 bytes   | 640 bytes    |
-
 ## Getting RouterRouter
 
 You've got a couple options for adding RouterRouter to your project:
