@@ -9,8 +9,7 @@
  *
  *  RouterRouter may be freely distributed under the MIT license.
  */
-
-const extractParameters = (route, pathname) => route.exec(pathname).slice(1).map(parameter => parameter ? decodeURIComponent(parameter) : null);
+const extractParameters = (route, pathname) => route.exec(pathname).slice(1).map((parameter => parameter ? decodeURIComponent(parameter) : null));
 
 const routeToRegExp = route => {
   route = route.replace(/[$.|]+?/g, "\\$&").replace(/\((.+?)\)/g, "(?:$1)?").replace(/:\w+/g, "([^/]+)").replace(/\*(\w+)?/g, "(.+?)");
@@ -23,7 +22,7 @@ class RouterRouter {
     this.location = window.location;
     const routes = this.options.routes;
     if (routes) {
-      Object.keys(routes).forEach(route => this.route(route, routes[route]));
+      Object.keys(routes).forEach((route => this.route(route, routes[route])));
     }
   }
   route(route, action) {
@@ -40,4 +39,4 @@ class RouterRouter {
   }
 }
 
-export default RouterRouter;
+export { RouterRouter as default };
