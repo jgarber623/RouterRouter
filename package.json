@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/routerrouter",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A very small JavaScript routing library extracted from Backbone’s Router.",
   "keywords": [
     "backbone",
@@ -13,7 +13,7 @@
   "author": {
     "name": "Jason Garber",
     "email": "jason@sixtwothree.org",
-    "url": "http://sixtwothree.org"
+    "url": "https://sixtwothree.org"
   },
   "files": [
     "dist"

@@ -1,11 +1,11 @@
 /*!
- *  RouterRouter v3.0.0
+ *  RouterRouter v3.0.1
  *
  *  A very small JavaScript routing library extracted from Backbone’s Router.
  *
  *  Source code available at: https://github.com/jgarber623/RouterRouter
  *
- *  (c) 2013-present Jason Garber (http://sixtwothree.org)
+ *  (c) 2013-present Jason Garber (https://sixtwothree.org)
  *
  *  RouterRouter may be freely distributed under the MIT license.
  */
