@@ -1,77 +1,28 @@
 import pkg from './package.json';
+import banner from './config/banner.js';
 
-import filesize from 'rollup-plugin-filesize';
 import { terser } from 'rollup-plugin-terser';
 
-const packageName = 'RouterRouter';
-const releaseYear = 2013;
-const srcFilePath = 'src/routerrouter.js';
-
-const filesizePluginOptions = {
-  format: {
-    exponent: 0,
-    fullform: true
-  },
-  theme: 'light'
+const terserConfig = {
+  compress: false,
+  mangle: false,
+  output: { beautify: true, indent_level: 2 }
 };
 
-const preamble = `/*!
- *  ${packageName} v${pkg.version}
- *
- *  ${pkg.description}
- *
- *  Source code available at: ${pkg.homepage}
- *
- *  (c) ${releaseYear}-present ${pkg.author.name} (${pkg.author.url})
- *
- *  ${packageName} may be freely distributed under the ${pkg.license} license.
- */
-`;
-
-export default [
-  // routerrouter.mjs and routerrouter.js
+export default ({ input, name }) => [
   {
-    input: srcFilePath,
-    output: [
-      {
-        file: pkg.module,
-        format: 'es'
-      },
-      {
-        file: pkg.main,
-        format: 'umd',
-        name: packageName
-      }
-    ],
-    plugins: [
-      filesize(filesizePluginOptions),
-      terser({
-        compress: false,
-        mangle: false,
-        output: {
-          beautify: true,
-          indent_level: 2,
-          preamble: preamble
-        }
-      })
-    ]
+    input,
+    output: { banner, file: pkg.module, format: 'es' },
+    plugins: [terser(terserConfig)]
   },
-
-  // routerrouter.min.js
   {
-    input: srcFilePath,
-    output: {
-      file: pkg.browser,
-      format: 'umd',
-      name: packageName
-    },
-    plugins: [
-      filesize(filesizePluginOptions),
-      terser({
-        output: {
-          preamble: preamble
-        }
-      })
-    ]
+    input,
+    output: { banner, file: pkg.main, format: 'umd', name },
+    plugins: [terser(terserConfig)]
+  },
+  {
+    input,
+    output: { banner, file: pkg.browser, format: 'umd', name },
+    plugins: [terser()]
   }
 ];
