@@ -1,3 +1,5 @@
+import RouterRouter from '../dist/routerrouter.mjs';
+
 describe('RouterRouter', () => {
   let router;
   let action;

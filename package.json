@@ -26,12 +26,12 @@
     "build": "rollup --config --input src/routerrouter.mjs --name RouterRouter",
     "lint": "eslint .",
     "start": "npm run build -- --watch",
-    "test": "node spec/console-runner.js file:///`pwd`/spec/runner.html"
+    "test": "jasmine-browser-runner runSpecs"
   },
   "devDependencies": {
     "@jgarber/eslint-config": "*",
-    "jasmine": "^3.9.0",
-    "puppeteer": "^13.0.1",
+    "jasmine-browser-runner": "*",
+    "jasmine-core": "*",
     "rollup": "*",
     "rollup-plugin-terser": "*"
   }
