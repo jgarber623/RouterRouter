@@ -8,9 +8,7 @@
     "router"
   ],
   "homepage": "https://github.com/jgarber623/RouterRouter",
-  "bugs": {
-    "url": "https://github.com/jgarber623/RouterRouter/issues"
-  },
+  "bugs": "https://github.com/jgarber623/RouterRouter/issues",
   "license": "MIT",
   "author": {
     "name": "Jason Garber",
@@ -23,10 +21,7 @@
   "main": "dist/routerrouter.js",
   "browser": "dist/routerrouter.min.js",
   "module": "dist/routerrouter.mjs",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jgarber623/RouterRouter.git"
-  },
+  "repository": "github:jgarber623/RouterRouter",
   "scripts": {
     "build": "rollup --config",
     "pretest": "npm run build",
