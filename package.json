@@ -24,11 +24,9 @@
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
     "build": "rollup --config",
-    "pretest": "npm run build",
-    "start": "rollup --config --watch",
-    "test": "npm-run-all test:*",
-    "test:lint": "eslint .",
-    "test:specs": "node spec/console-runner.js file:///`pwd`/spec/runner.html"
+    "lint": "eslint .",
+    "start": "npm run build -- --watch",
+    "test": "node spec/console-runner.js file:///`pwd`/spec/runner.html"
   },
   "devDependencies": {
     "eslint": "^8.1.0",
