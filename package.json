@@ -23,7 +23,7 @@
   "module": "dist/routerrouter.mjs",
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
-    "build": "rollup --config --input src/routerrouter.js --name RouterRouter",
+    "build": "rollup --config --input src/routerrouter.mjs --name RouterRouter",
     "lint": "eslint .",
     "start": "npm run build -- --watch",
     "test": "node spec/console-runner.js file:///`pwd`/spec/runner.html"

@@ -26,7 +26,7 @@ Contributing to RouterRouter is pretty straightforward:
 1. Fork the RouterRouter repo and clone it.
 1. Install development dependencies by running `npm install` from the root of the project.
 1. Create a feature branch for the issue or new feature you're looking to tackle: `git checkout -b your-descriptive-branch-name`.
-1. Run `npm start` which instructs [Rollup](https://rollupjs.org) to watch `src/routerrouter.js` for changes and automatically exports built files to the `dist` folder.
+1. Run `npm start` which instructs [Rollup](https://rollupjs.org) to watch `src/routerrouter.mjs` for changes and automatically exports built files to the `dist` folder.
 1. _Write some code!_
 1. If your changes would benefit from testing, add the necessary tests and verify everything passes by running `npm test`.
 1. Commit your changes: `git commit -am 'Add some new feature or fix some issue'`.
@@ -35,7 +35,7 @@ Contributing to RouterRouter is pretty straightforward:
 
 ## "But which files do I change?!?"
 
-Excellent question. RouterRouter's source code is in the file `src/routerrouter.js`. Make your changes here!
+Excellent question. RouterRouter's source code is in the file `src/routerrouter.mjs`. Make your changes here!
 
 When you're done working (and before you push your code or issue a pull request), run `npm run build` from the root of the project to recreate the files in the `dist` folder. This task will generate compiled and compressed versions of the project.
 
