@@ -24,7 +24,7 @@
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
     "build": "rollup --config --input src/routerrouter.mjs --name RouterRouter",
-    "lint": "eslint .",
+    "lint": "eslint . --ext .js,.mjs",
     "start": "npm run build -- --watch",
     "test": "jasmine-browser-runner runSpecs"
   },
