@@ -29,7 +29,7 @@
     "test": "jasmine-browser-runner runSpecs"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "*",
+    "@jgarber/eslint-config": "^0.2.0",
     "jasmine-browser-runner": "*",
     "jasmine-core": "*",
     "rollup": "*",
