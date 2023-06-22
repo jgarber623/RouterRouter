@@ -23,16 +23,16 @@
   "module": "dist/routerrouter.mjs",
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
-    "build": "rollup --config --input src/routerrouter.mjs --name RouterRouter",
+    "build": "rollup --config",
     "lint": "eslint . --ext .js,.mjs",
     "start": "npm run build -- --watch",
     "test": "jasmine-browser-runner runSpecs"
   },
   "devDependencies": {
     "@jgarber/eslint-config": "^0.2.0",
+    "@rollup/plugin-terser": "^0.4.3",
     "jasmine-browser-runner": "^2.0.0",
     "jasmine-core": "^5.0.1",
-    "rollup": "*",
-    "rollup-plugin-terser": "*"
+    "rollup": "^2.79.1"
   }
 }
