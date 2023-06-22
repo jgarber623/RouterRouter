@@ -30,8 +30,8 @@
   },
   "devDependencies": {
     "@jgarber/eslint-config": "^0.2.0",
-    "jasmine-browser-runner": "*",
-    "jasmine-core": "*",
+    "jasmine-browser-runner": "^2.0.0",
+    "jasmine-core": "^5.0.1",
     "rollup": "*",
     "rollup-plugin-terser": "*"
   }
