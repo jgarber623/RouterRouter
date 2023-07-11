@@ -42,7 +42,7 @@ describe('RouterRouter', () => {
     });
 
     it('matches a string containing encoded characters', () => {
-      router.location = new Location('https://example.com/foo%2Fbar')
+      router.location = new Location('https://example.com/foo%2Fbar');
       router.route('/foo/bar', action);
 
       expect(action).toHaveBeenCalled();
@@ -63,7 +63,7 @@ describe('RouterRouter', () => {
     });
 
     it('matches a string containing newline characters', () => {
-      router.location = new Location('https://example.com/foo%0Abar')
+      router.location = new Location('https://example.com/foo%0Abar');
       router.route('/foo\nbar', action);
 
       expect(action).toHaveBeenCalled();
@@ -156,21 +156,21 @@ describe('RouterRouter', () => {
   describe('regular expression matching', () => {
     it('matches a single group', () => {
       router.location = new Location('https://example.com/foo/bar');
-      router.route(new RegExp('^/(.*?)/.*$'), action);
+      router.route(/^\/(.*?)\/.*$/, action);
 
       expect(action).toHaveBeenCalledWith('foo');
     });
 
     it('matches multiple groups', () => {
       router.location = new Location('https://example.com/foo/bar');
-      router.route(new RegExp('^/(.*?)/(.*?)$'), action);
+      router.route(/^\/(.*?)\/(.*?)$/, action);
 
-      expect(action).toHaveBeenCalledWith('foo', 'bar')
+      expect(action).toHaveBeenCalledWith('foo', 'bar');
     });
 
     it('does not match passive groups', () => {
       router.location = new Location('https://example.com/foo/bar/biz');
-      router.route(new RegExp('^/(.*?)/(?:.*?)/(.*?)$'), action);
+      router.route(/^\/(.*?)\/(?:.*?)\/(.*?)$/, action);
 
       expect(action).toHaveBeenCalledWith('foo', 'biz');
     });
