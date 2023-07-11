@@ -31,7 +31,7 @@
   "devDependencies": {
     "@jgarber/eslint-config": "^0.2.0",
     "@rollup/plugin-terser": "^0.4.3",
-    "jasmine-browser-runner": "^2.0.0",
+    "jasmine-browser-runner": "^2.1.0",
     "jasmine-core": "^5.0.1",
     "rollup": "^3.26.0"
   }
