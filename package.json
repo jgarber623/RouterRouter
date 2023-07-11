@@ -24,13 +24,14 @@
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
     "build": "rollup --config",
-    "lint": "eslint . --ext .js,.mjs",
+    "lint": "eslint .",
     "start": "npm run build -- --watch",
     "test": "jasmine-browser-runner runSpecs"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^0.2.0",
+    "@jgarber/eslint-config": "^1.1.0",
     "@rollup/plugin-terser": "^0.4.3",
+    "globals": "^13.20.0",
     "jasmine-browser-runner": "^2.1.0",
     "jasmine-core": "^5.0.1",
     "rollup": "^3.26.2"
