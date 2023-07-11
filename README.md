@@ -6,7 +6,6 @@
 [![Downloads](https://img.shields.io/npm/dt/@jgarber/routerrouter.svg?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@jgarber/routerrouter)
 [![Build](https://img.shields.io/github/actions/workflow/status/jgarber623/RouterRouter/ci.yml?branch=main&logo=github&style=for-the-badge)](https://github.com/jgarber623/RouterRouter/actions/workflows/ci.yml)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jgarber623/RouterRouter.svg?logo=code-climate&style=for-the-badge)](https://codeclimate.com/github/jgarber623/RouterRouter)
-[![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/jgarber623/RouterRouter?logo=snyk&style=for-the-badge)](https://snyk.io/test/github/jgarber623/RouterRouter)
 
 Using a modified version of Backbone's routing code, RouterRouter provides Backbone-style route definition while remaining a small, standalone, dependency-free library. RouterRouter maps specified routes (the value returned from `window.location.pathname`) to user-defined actions. This approach may be useful for websites with predictable URLs and modular, component-specific JavaScript.
 
