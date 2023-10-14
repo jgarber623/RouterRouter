@@ -16,24 +16,37 @@
     "url": "https://sixtwothree.org"
   },
   "files": [
-    "dist"
+    "dist/*",
+    "src/*"
   ],
-  "main": "dist/routerrouter.js",
-  "browser": "dist/routerrouter.min.js",
-  "module": "dist/routerrouter.mjs",
+  "type": "module",
+  "exports": {
+    "import": "./dist/routerrouter.mjs",
+    "require": "./dist/routerrouter.cjs"
+  },
+  "browser": "./dist/routerrouter.js",
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
     "build": "rollup --config",
+    "clean": "rm -rf coverage dist",
     "lint": "eslint .",
+    "prebuild": "npm run clean",
     "start": "npm run build -- --watch",
-    "test": "jasmine-browser-runner runSpecs"
+    "test": "c8 ava"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^1.1.1",
-    "@rollup/plugin-terser": "^0.4.3",
-    "globals": "^13.20.0",
-    "jasmine-browser-runner": "^2.1.0",
-    "jasmine-core": "^5.1.0",
-    "rollup": "^3.27.0"
+    "@jgarber/eslint-config": "^2.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "ava": "^5.3.1",
+    "c8": "^8.0.1",
+    "jsdom": "^22.1.0",
+    "rollup": "^4.0.2",
+    "sinon": "^16.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
