@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>RouterRouter: Examples</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      color: #333;
+      font-family: sans-serif;
+      line-height: 1.5;
+      padding: 3rem;
+    }
+
+    a {
+      color: #c00;
+      text-decoration: underline;
+    }
+
+    a:focus,
+    a:hover {
+      color: #a00;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>RouterRouter: Example</h1>
+
+  <p>:wave:</p>
+
+  <script type="module">
+    import RouterRouter from '../dist/routerrouter.mjs';
+
+    new RouterRouter({
+      routes: {
+        '/example/:name.html': 'pageOneAction'
+      },
+
+      pageOneAction: name => {
+        console.log(`RouterRouter captured a named parameter value: ${name}`);
+      }
+    });
+  </script>
+
+</body>
+</html>

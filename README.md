@@ -12,13 +12,13 @@ Using a modified version of Backbone's routing code, RouterRouter provides Backb
 
 - Inspired by Backbone's routing API
 - Dependency-free
-- ES2015/AMD/Node module support
+- JavaScript module (ESM), CommonJS, and browser global (`window.RouterRouter`) support
 
 ## Getting RouterRouter
 
 You've got a couple options for adding RouterRouter to your project:
 
-- [Download a tagged version](https://github.com/jgarber623/RouterRouter/tags) from GitHub and do it yourself _(old school)_.
+- [Download a release](https://github.com/jgarber623/RouterRouter/releases) from GitHub and do it yourself _(old school)_.
 - Install using [npm](https://www.npmjs.com/package/@jgarber/routerrouter): `npm install @jgarber/routerrouter --save`
 - Install using [Yarn](https://yarnpkg.com/en/package/@jgarber/routerrouter): `yarn add @jgarber/routerrouter`
 
@@ -145,17 +145,13 @@ router.route(/^\/(links|photos|posts)\/(?:.*)$/, (section) => {
 });
 ```
 
+### Examples
+
+For a full-featured RouterRouter demonstration, check out [the included example files](https://github.com/jgarber623/RouterRouter/blob/main/example).
+
 ## Browser Support
 
-RouterRouter works in modern browsers. The library makes use of several new(ish) JavaScript methods, including:
-
-- Arrow function expressions ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
-- Classes ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes))
-- Template literals ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals))
-- `Object.keys()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys))
-- `Array.prototype.map()` ([MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map))
-
-RouterRouter, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
+**RouterRouter works in modern browsers.** The library makes use of several new(ish) JavaScript features and, in an effort to remain as lightweight and dependency-free as possible, leaves it up to you to choose whether or not to polyfill features for older browsers.
 
 ## Limitations
 
