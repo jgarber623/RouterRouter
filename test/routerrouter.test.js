@@ -4,6 +4,12 @@ import { JSDOM } from 'jsdom';
 
 import RouterRouter from '../src/routerrouter.js';
 
+/**
+ * @param {string} url A URL string of the page under test.
+ *
+ * @returns {object} An object containing the action spy, the JSDOM instance,
+ *     and the RouterRouter instance.
+ */
 function setup(url = 'https://routerrouter.example') {
   const dom = new JSDOM('', { url });
 
@@ -170,7 +176,7 @@ test('does not match missing optional parameters', t => {
 test('matches a single group', t => {
   const { action, router } = setup('https://example.com/foo/bar');
 
-  router.route(/^\/(.*?)\/.*$/, action);
+  router.route(/^\/(.*)\/.*$/, action);
 
   t.true(action.calledOnceWith('foo'));
 });
@@ -178,7 +184,7 @@ test('matches a single group', t => {
 test('matches multiple groups', t => {
   const { action, router } = setup('https://example.com/foo/bar');
 
-  router.route(/^\/(.*?)\/(.*?)$/, action);
+  router.route(/^\/(.*)\/(.*)$/, action);
 
   t.true(action.calledOnceWith('foo', 'bar'));
 });
@@ -186,7 +192,7 @@ test('matches multiple groups', t => {
 test('does not match passive groups', t => {
   const { action, router } = setup('https://example.com/foo/bar/biz');
 
-  router.route(/^\/(.*?)\/(?:.*?)\/(.*?)$/, action);
+  router.route(/^\/(.*)\/.*\/(.*)$/, action);
 
   t.true(action.calledOnceWith('foo', 'biz'));
 });
