@@ -6,5 +6,19 @@ export default [
     ignores: ['coverage', 'dist']
   },
   ...config,
-  ...ava
+  ...ava,
+  {
+    files: ['src/*.js'],
+    languageOptions: {
+      globals: {
+        window: 'readonly'
+      }
+    }
+  },
+  {
+    files: ['test/*.js'],
+    rules: {
+      'regexp/no-super-linear-backtracking': 'off'
+    }
+  }
 ];
