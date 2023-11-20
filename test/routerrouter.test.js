@@ -1,6 +1,6 @@
+import { JSDOM } from 'jsdom';
 import sinon from 'sinon';
 import test from 'ava';
-import { JSDOM } from 'jsdom';
 
 import RouterRouter from '../src/routerrouter.js';
 
