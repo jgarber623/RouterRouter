@@ -44,8 +44,7 @@
     "@jgarber/eslint-config": "^3.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "jsdom": "^23.2.0",
-    "rollup": "^4.9.4",
-    "sinon": "^17.0.1"
+    "rollup": "^4.9.4"
   },
   "engines": {
     "node": ">=18"
