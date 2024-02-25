@@ -1,12 +1,12 @@
+import assert from 'node:assert';
+import { mock, test } from 'node:test';
+
 import { JSDOM } from 'jsdom';
-import sinon from 'sinon';
-import test from 'ava';
 
 import RouterRouter from '../src/routerrouter.js';
 
 /**
  * @param {string} url A URL string of the page under test.
- *
  * @returns {object} An object containing the action spy, the JSDOM instance,
  *     and the RouterRouter instance.
  */
@@ -15,7 +15,7 @@ function setup(url = 'https://routerrouter.example') {
 
   Object.assign(globalThis, { window: dom.window });
 
-  const action = sinon.spy();
+  const action = mock.fn();;
   const router = new RouterRouter();
 
   return { action, dom, router };
@@ -26,7 +26,7 @@ test('matches a forward slash', t => {
 
   router.route('/', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a string', t => {
@@ -34,7 +34,7 @@ test('matches a string', t => {
 
   router.route('/foo', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('treats trailing slashes as unique URLs', t => {
@@ -42,7 +42,7 @@ test('treats trailing slashes as unique URLs', t => {
 
   router.route('/foo', action);
 
-  t.true(action.notCalled);
+  assert.strictEqual(action.mock.callCount(), 0);
 });
 
 test('matches a string containing special characters', t => {
@@ -50,7 +50,7 @@ test('matches a string containing special characters', t => {
 
   router.route('/$foo/~bar/@=|biz!buz.html', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a string containing encoded characters', t => {
@@ -58,7 +58,7 @@ test('matches a string containing encoded characters', t => {
 
   router.route('/foo/bar', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a string containing Unicode characters', t => {
@@ -66,7 +66,7 @@ test('matches a string containing Unicode characters', t => {
 
   router.route('/föö', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a string containing emoji characters', t => {
@@ -74,7 +74,7 @@ test('matches a string containing emoji characters', t => {
 
   router.route('/🤔', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a string containing newline characters', t => {
@@ -82,7 +82,7 @@ test('matches a string containing newline characters', t => {
 
   router.route('/foo\nbar', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a single named parameter', t => {
@@ -90,7 +90,8 @@ test('matches a single named parameter', t => {
 
   router.route('/posts/:id', action);
 
-  t.true(action.calledOnceWith('1'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['1']);
 });
 
 test('matches multiple named parameters', t => {
@@ -98,7 +99,8 @@ test('matches multiple named parameters', t => {
 
   router.route('/:section/:id', action);
 
-  t.true(action.calledOnceWith('posts', '1'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['posts', '1']);
 });
 
 test('matches a complex named parameter', t => {
@@ -106,7 +108,8 @@ test('matches a complex named parameter', t => {
 
   router.route('/posts/a-:named_parameter-post-name', action);
 
-  t.true(action.calledOnceWith('sample'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['sample']);
 });
 
 test('does not match a named parameter containing invalid characters', t => {
@@ -114,7 +117,7 @@ test('does not match a named parameter containing invalid characters', t => {
 
   router.route('/posts/:🤔', action);
 
-  t.true(action.notCalled);
+  assert.strictEqual(action.mock.callCount(), 0);
 });
 
 test('matches a single wildcard parameter', t => {
@@ -122,7 +125,8 @@ test('matches a single wildcard parameter', t => {
 
   router.route('/*wildcard_parameter/baz', action);
 
-  t.true(action.calledOnceWith('foo/bar/biz'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['foo/bar/biz']);
 });
 
 test('matches multiple wildcard parameters', t => {
@@ -130,7 +134,8 @@ test('matches multiple wildcard parameters', t => {
 
   router.route('/foo/*/biz/*', action);
 
-  t.true(action.calledOnceWith('bar', 'baz'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['bar', 'baz']);
 });
 
 test('matches a single optional parameter', t => {
@@ -138,7 +143,7 @@ test('matches a single optional parameter', t => {
 
   router.route('/foo(/)', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches multiple optional parameters', t => {
@@ -146,7 +151,7 @@ test('matches multiple optional parameters', t => {
 
   router.route('/foo(/bar)(/biz)', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a single optional named parameter', t => {
@@ -154,7 +159,8 @@ test('matches a single optional named parameter', t => {
 
   router.route('/foo(/:optional_parameter)', action);
 
-  t.true(action.calledOnceWith('bar'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['bar']);
 });
 
 test('matches multiple optional named parameters', t => {
@@ -162,7 +168,8 @@ test('matches multiple optional named parameters', t => {
 
   router.route('(/:optional_parameter_1)(/:optional_parameter_2)', action);
 
-  t.true(action.calledOnceWith('foo', null));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['foo', null]);
 });
 
 test('does not match missing optional parameters', t => {
@@ -170,7 +177,7 @@ test('does not match missing optional parameters', t => {
 
   router.route('(/bar)/foo(/biz)', action);
 
-  t.true(action.calledOnce);
+  assert.strictEqual(action.mock.callCount(), 1);
 });
 
 test('matches a single group', t => {
@@ -178,7 +185,8 @@ test('matches a single group', t => {
 
   router.route(/^\/(.*)\/.*$/, action);
 
-  t.true(action.calledOnceWith('foo'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['foo']);
 });
 
 test('matches multiple groups', t => {
@@ -186,7 +194,8 @@ test('matches multiple groups', t => {
 
   router.route(/^\/(.*)\/(.*)$/, action);
 
-  t.true(action.calledOnceWith('foo', 'bar'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['foo', 'bar']);
 });
 
 test('does not match passive groups', t => {
@@ -194,5 +203,6 @@ test('does not match passive groups', t => {
 
   router.route(/^\/(.*)\/.*\/(.*)$/, action);
 
-  t.true(action.calledOnceWith('foo', 'biz'));
+  assert.strictEqual(action.mock.callCount(), 1);
+  assert.deepStrictEqual(action.mock.calls[0].arguments, ['foo', 'biz']);
 });
