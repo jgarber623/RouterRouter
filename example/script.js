@@ -7,7 +7,7 @@ new RouterRouter({
     "(/:prefix)/example/:name.html": "pageOneAction",
   },
 
-  pageOneAction: (name) => {
+  pageOneAction: (prefix, name) => {
     console.log(`RouterRouter captured a named parameter value: ${name}`);
   }
 });
