@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/routerrouter",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A very small JavaScript routing library extracted from Backbone’s Router.",
   "keywords": [
     "backbone",
