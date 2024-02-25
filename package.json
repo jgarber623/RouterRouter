@@ -35,9 +35,9 @@
     "clean": "rm -rf coverage dist",
     "lint": "eslint .",
     "prebuild": "npm run clean",
-    "start": "concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
+    "start": "npx concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
     "start:build": "npm run build -- --watch",
-    "start:serve": "http-server .",
+    "start:serve": "npx http-server .",
     "test": "c8 ava"
   },
   "devDependencies": {
@@ -45,14 +45,12 @@
     "@rollup/plugin-terser": "^0.4.4",
     "ava": "^6.0.1",
     "c8": "^9.0.0",
-    "concurrently": "^8.2.2",
-    "http-server": "^14.1.1",
     "jsdom": "^23.2.0",
     "rollup": "^4.9.4",
     "sinon": "^17.0.1"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
