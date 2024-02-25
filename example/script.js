@@ -9,5 +9,5 @@ new RouterRouter({
 
   pageOneAction: (prefix, name) => {
     console.log(`RouterRouter captured a named parameter value: ${name}`);
-  }
+  },
 });
