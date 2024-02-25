@@ -2,9 +2,9 @@ import RouterRouter from "../src/routerrouter.js";
 
 new RouterRouter({
   routes: {
-    "/example/": () => console.log("Hello, home page."),
+    "(:prefix)/example(/)": () => console.log("Hello, home page."),
 
-    "/example/:name.html": "pageOneAction",
+    "(:prefix)/example/:name.html": "pageOneAction",
   },
 
   pageOneAction: (name) => {
