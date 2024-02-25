@@ -38,13 +38,11 @@
     "start": "npx concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
     "start:build": "npm run build -- --watch",
     "start:serve": "npx http-server .",
-    "test": "c8 ava"
+    "test": "NODE_V8_COVERAGE=coverage node --experimental-test-coverage --test"
   },
   "devDependencies": {
     "@jgarber/eslint-config": "^3.0.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "ava": "^6.0.1",
-    "c8": "^9.0.0",
     "jsdom": "^23.2.0",
     "rollup": "^4.9.4",
     "sinon": "^17.0.1"
