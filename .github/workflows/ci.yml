@@ -18,7 +18,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
   test:
-    name: Test
+    name: Test (Node.js v${{ matrix.version }})
     needs: lint
     runs-on: ubuntu-latest
     strategy:
