@@ -31,9 +31,8 @@ A basic example, matching a route:
 ```js
 const router = new RouterRouter();
 
-router.route('/posts', () => { // matches https://example.com/posts
-  console.log('Hello!');
-});
+// matches https://example.com/posts
+router.route("/posts", () => console.log("Hello!"));
 ```
 
 Another example, this time using a named parameter to match a route:
@@ -41,9 +40,8 @@ Another example, this time using a named parameter to match a route:
 ```js
 const router = new RouterRouter();
 
-router.route('/posts/:slug', (slug) => { // matches https://example.com/posts/hello-world
-  console.log(slug); // logs 'hello-world'
-});
+// matches https://example.com/posts/hello-world and logs "hellow-world"
+router.route("/posts/:slug", (slug) => console.log(slug));
 ```
 
 RouterRouter supports a number of different matchers which are outlined below in the [Pattern Matching](#pattern-matching) section.
@@ -57,25 +55,25 @@ const router = new RouterRouter({
   // Routes are defined in the `routes` object:
   routes: {
     // Actions may be defined inline:
-    '/': () => {
-      console.log('This route matches the root URL');
+    "/": () => {
+      console.log("This route matches the root URL");
     },
 
     // Routes may also be mapped to named actions:
-    '/posts': 'postsPageAction',
+    "/posts": "postsPageAction",
 
     // Matched patterns in routes are passed to actions
     // in the order they appear in the route:
-    '/posts/:year/:month/:slug', 'postPageAction'
+    "/posts/:year/:month/:slug", "postPageAction"
   },
 
   postPageAction: (year, month, slug) => {
-    // Logs strings like '2018', '06', 'hello-world'
+    // Logs strings like "2018", "06", "hello-world"
     console.log(year, month, slug);
   },
 
   postsPageAction: () => {
-    console.log('This route matches the /posts URL');
+    console.log("This route matches the /posts URL");
   }
 });
 ```
@@ -98,19 +96,19 @@ RouterRouter will match URL patterns similar to [Backbone's Router](http://backb
 
 Named parameters match patterns in routes and pass the captured values to the associated action for reuse. Captured values are passed to the action in the order they appear in the route. Named parameters are limited to strings of characters appearing _between_ slashes (`/`) in a URL.
 
-| Route                   | Matched URLs                                | Matched Patterns |
-|:------------------------|:--------------------------------------------|:-----------------|
-| `/posts/:slug`          | https://example.com/posts/hello-world       | `hello-world` |
+| Route                   | Matched URLs                                | Matched Patterns             |
+|:------------------------|:--------------------------------------------|:-----------------------------|
+| `/posts/:slug`          | https://example.com/posts/hello-world       | `hello-world`                |
 | `/:section/:subsection` | https://example.com/solar-systems/milky-way | `solar-systems`, `milky-way` |
 
 ### Wildcard Parameters
 
 Wildcard parameters match patterns in routes _including_ slashes (`/`) in URLs. For clarity, wildcard parameters may optionally include a named identifier (e.g. `*wildcard_parameter`). Similar to named parameters, captured values are passed to the action in the order they appear in the route and may include slashes.
 
-| Route                     | Matched URLs                                | Matched Patterns |
-|:--------------------------|:--------------------------------------------|:-----------------|
-| `/posts/*/06/*`           | https://example.com/posts/2018/06/23        | `2018`, `23` |
-| `/posts/*years_months/23` | https://example.com/posts/2018/06/23        | `2018/06` |
+| Route                     | Matched URLs                         | Matched Patterns |
+|:--------------------------|:------------------------------------ |:-----------------|
+| `/posts/*/06/*`           | https://example.com/posts/2018/06/23 | `2018`, `23`     |
+| `/posts/*years_months/23` | https://example.com/posts/2018/06/23 | `2018/06`        |
 
 ### Optional Parameters
 
@@ -118,13 +116,13 @@ Optional parameters match patterns in routes conditionally and pass captured val
 
 | Route              | Matched URLs                          | Matched Patterns |
 |:-------------------|:--------------------------------------|:-----------------|
-| `/posts(/)`        | https://example.com/posts             | |
-|                    | https://example.com/posts/            | |
-| `/posts(/:slug)`   | https://example.com/posts             | |
-|                    | https://example.com/posts/hello-world | `hello-world` |
-| `(/:section)/2018` | https://example.com/2018              | |
-|                    | https://example.com/posts/2018        | `posts` |
-|                    | https://example.com/archives/2018     | `archives` |
+| `/posts(/)`        | https://example.com/posts             |                  |
+|                    | https://example.com/posts/            |                  |
+| `/posts(/:slug)`   | https://example.com/posts             |                  |
+|                    | https://example.com/posts/hello-world | `hello-world`    |
+| `(/:section)/2018` | https://example.com/2018              |                  |
+|                    | https://example.com/posts/2018        | `posts`          |
+|                    | https://example.com/archives/2018     | `archives`       |
 
 ### Regular Expressions
 
@@ -136,18 +134,16 @@ RouterRouter supports route definitions using [regular expressions](https://deve
 const router = new RouterRouter();
 
 router.route(/\/comments\/?$/, () => {
-  console.log('This route matches URLs ending in /comments or /comments/');
+  console.log("This route matches URLs ending in /comments or /comments/");
 });
 
-router.route(/^\/(links|photos|posts)\/(?:.*)$/, (section) => {
-  // Logs 'links', 'photos', or 'posts'
-  console.log(section);
-});
+// Logs "links", "photos", or "posts"
+router.route(/^\/(links|photos|posts)\/(?:.*)$/, (section) => console.log(section));
 ```
 
 ### Examples
 
-For a full-featured RouterRouter demonstration, check out [the demo page](https://jgarber623.github.io/RouterRouter/example/) and [the example files](https://github.com/jgarber623/RouterRouter/blob/main/example/index.html).
+For a full-featured RouterRouter demonstration, check out [the demo page](https://jgarber623.github.io/RouterRouter/example/) and [the example files](https://github.com/jgarber623/RouterRouter/tree/main/example).
 
 ## Browser Support
 
