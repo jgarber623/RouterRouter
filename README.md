@@ -147,7 +147,7 @@ router.route(/^\/(links|photos|posts)\/(?:.*)$/, (section) => {
 
 ### Examples
 
-For a full-featured RouterRouter demonstration, check out [the included example files](https://github.com/jgarber623/RouterRouter/blob/main/example).
+For a full-featured RouterRouter demonstration, check out [the demo page](https://jgarber623.github.io/RouterRouter/example/) and [the example files](https://github.com/jgarber623/RouterRouter/blob/main/example/index.html).
 
 ## Browser Support
 
