@@ -1,23 +1,23 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync } from "node:fs";
 
-import terser from '@rollup/plugin-terser';
+import terser from "@rollup/plugin-terser";
 
-const package_ = JSON.parse(readFileSync('./package.json'));
+const pkg = JSON.parse(readFileSync("./package.json"));
 
-const input = './src/routerrouter.js';
-const name = 'RouterRouter';
+const input = "./src/routerrouter.js";
+const name = "RouterRouter";
 
 const banner = `/**
  * @name ${name}
- * @version ${package_.version}
+ * @version ${pkg.version}
  *
- * @file ${package_.description}
+ * @file ${pkg.description}
  *
- * {@link ${package_.homepage}}
+ * {@link ${pkg.homepage}}
  *
- * @copyright 2013-${new Date().getFullYear()} ${package_.author.name} (${package_.author.url})
+ * @copyright 2013 ${pkg.author.name} (${pkg.author.url})
  *
- * @license ${package_.license}
+ * @license ${pkg.license}
  */
 `;
 
@@ -26,8 +26,8 @@ const terserConfig = {
   mangle: false,
   output: {
     beautify: true,
-    indent_level: 2
-  }
+    indent_level: 2,
+  },
 };
 
 export default [
@@ -35,28 +35,28 @@ export default [
     input,
     output: {
       banner,
-      file: package_.exports.import,
-      format: 'es'
+      file: pkg.exports.import,
+      format: "es",
     },
-    plugins: [terser(terserConfig)]
+    plugins: [terser(terserConfig)],
   },
   {
     input,
     output: {
       banner,
-      file: package_.exports.require,
-      format: 'cjs'
+      file: pkg.exports.require,
+      format: "cjs",
     },
-    plugins: [terser(terserConfig)]
+    plugins: [terser(terserConfig)],
   },
   {
     input,
     output: {
       banner,
-      file: package_.browser,
-      format: 'iife',
-      name
+      file: pkg.browser,
+      format: "iife",
+      name,
     },
-    plugins: [terser()]
-  }
+    plugins: [terser()],
+  },
 ];

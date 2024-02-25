@@ -1,24 +1,20 @@
-import ava from '@jgarber/eslint-config/ava';
-import config from '@jgarber/eslint-config';
+import config from "@jgarber/eslint-config";
 
 export default [
-  {
-    ignores: ['coverage', 'dist']
-  },
+  { ignores: ["coverage", "dist"] },
   ...config,
-  ...ava,
   {
-    files: ['src/*.js'],
+    files: ["src/*.js"],
     languageOptions: {
       globals: {
-        window: 'readonly'
-      }
-    }
+        window: "readonly",
+      },
+    },
   },
   {
-    files: ['test/*.js'],
+    files: ["test/*.js"],
     rules: {
-      'regexp/no-super-linear-backtracking': 'off'
-    }
-  }
+      "regexp/no-super-linear-backtracking": "off",
+    },
+  },
 ];

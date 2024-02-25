@@ -2,23 +2,23 @@
 // and decoded parameters. Empty or unmatched parameters will be treated
 // as `null` to normalize cross-browser behavior.
 const extractParameters = (route, pathname) => {
-  return route.exec(pathname).slice(1).map(parameter => {
+  return route.exec(pathname).slice(1).map((parameter) => {
     return parameter ? decodeURIComponent(parameter) : null;
   });
 };
 
 // Convert a route string into a regular expression suitable for matching
 // against the current location's `pathname`.
-const routeToRegExp = route => {
+const routeToRegExp = (route) => {
   route = route
     // escape RegExp reserved characters
-    .replaceAll(/[$.|]+/g, '\\$&')
+    .replaceAll(/[$.|]+/g, "\\$&")
     // replace optional parameters with RegExp
-    .replaceAll(/\((.+?)\)/g, '(?:$1)?')
+    .replaceAll(/\((.+?)\)/g, "(?:$1)?")
     // replace named parameters with RegExp
-    .replaceAll(/:\w+/g, '([^/]+)')
+    .replaceAll(/:\w+/g, "([^/]+)")
     // replace wildcard parameters with RegExp
-    .replaceAll(/\*(\w+)?/g, '(.+?)');
+    .replaceAll(/\*(\w+)?/g, "(.+?)");
 
   return new RegExp(`^${route}$`);
 };
@@ -38,10 +38,10 @@ export default class RouterRouter {
    * @example
    * new RouterRouter({
    *   routes: {
-   *     '/': () => {
-   *       console.log('This route matches the root URL');
+   *     "/": () => {
+   *       console.log("This route matches the root URL");
    *     },
-   *   }
+   *   },
    * });
    */
   constructor(options = {}) {
@@ -65,7 +65,7 @@ export default class RouterRouter {
    *     matches the current page's URL.
    *
    * @example
-   * router.route('/search/:query/:page', (query, page) => {
+   * router.route("/search/:query/:page", (query, page) => {
    *   console.log(query, page);
    * });
    */
@@ -76,11 +76,11 @@ export default class RouterRouter {
       route = routeToRegExp(route);
     }
 
-    if (typeof action === 'string') {
+    if (typeof action === "string") {
       action = this.options[action];
     }
 
-    if (route.test(pathname) && typeof action === 'function') {
+    if (route.test(pathname) && typeof action === "function") {
       action.apply(this, extractParameters(route, pathname));
     }
   }
