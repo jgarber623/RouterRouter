@@ -1,3 +1,16 @@
+/*!
+ * @name RouterRouter
+ * @version 5.0.0
+ *
+ * @file A very small JavaScript routing library extracted from Backbone’s Router.
+ *
+ * {@link https://github.com/jgarber623/RouterRouter}
+ *
+ * @copyright 2013 Jason Garber (https://sixtwothree.org)
+ *
+ * @license MIT
+ */
+
 // Given a RegExp'ed `route` and a `path`, return the array of extracted
 // and decoded parameters. Empty or unmatched parameters will be treated
 // as `null` to normalize cross-browser behavior.

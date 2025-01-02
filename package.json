@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/routerrouter",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "A very small JavaScript routing library extracted from Backbone’s Router.",
   "keywords": [
     "backbone",
@@ -10,44 +10,25 @@
   "homepage": "https://github.com/jgarber623/RouterRouter",
   "bugs": "https://github.com/jgarber623/RouterRouter/issues",
   "license": "MIT",
-  "author": {
-    "name": "Jason Garber",
-    "email": "jason@sixtwothree.org",
-    "url": "https://sixtwothree.org"
-  },
+  "author": "Jason Garber <jason@sixtwothree.org> (https://sixtwothree.org)",
   "files": [
-    "dist/*",
     "example/*",
-    "src/*"
+    "index.js"
   ],
   "type": "module",
-  "exports": {
-    "import": "./dist/routerrouter.mjs",
-    "require": "./dist/routerrouter.cjs"
-  },
-  "browser": "./dist/routerrouter.js",
   "directories": {
     "example": "example"
   },
   "repository": "github:jgarber623/RouterRouter",
   "scripts": {
-    "build": "rollup --config",
-    "clean": "rm -rf coverage dist",
-    "lint": "eslint .",
-    "prebuild": "npm run clean",
-    "start": "npx concurrently --kill-others-on-fail --prefix-colors yellow,blue 'npm:start:*'",
-    "start:build": "npm run build -- --watch",
-    "start:serve": "npx http-server .",
+    "start": "npx http-server .",
     "test": "NODE_V8_COVERAGE=coverage node --experimental-test-coverage --test"
   },
   "devDependencies": {
-    "@jgarber/eslint-config": "^5.0.0",
-    "@rollup/plugin-terser": "^0.4.4",
-    "jsdom": "^25.0.0",
-    "rollup": "^4.12.0"
+    "jsdom": "^25.0.1"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.13"
   },
   "publishConfig": {
     "access": "public"

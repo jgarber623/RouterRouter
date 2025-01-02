@@ -1,4 +1,4 @@
-import RouterRouter from "../src/routerrouter.js";
+import RouterRouter from "../index.js";
 
 new RouterRouter({
   routes: {

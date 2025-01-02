@@ -8,11 +8,14 @@
 
 Using a modified version of Backbone's routing code, RouterRouter provides Backbone-style route definition while remaining a small, standalone, dependency-free library. RouterRouter maps specified routes (the value returned from `window.location.pathname`) to user-defined actions. This approach may be useful for websites with predictable URLs and modular, component-specific JavaScript.
 
+> [!NOTE]
+> RouterRouter is feature complete and will only be updated to address bugs or security issues.
+
 ### Key Features
 
 - Inspired by Backbone's routing API
 - Dependency-free
-- JavaScript module (ESM), CommonJS, and browser global (`window.RouterRouter`) support
+- JavaScript module (ESM)
 
 ## Getting RouterRouter
 

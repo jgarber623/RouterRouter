@@ -3,7 +3,7 @@ import assert from "node:assert";
 
 import { JSDOM } from "jsdom";
 
-import RouterRouter from "../src/routerrouter.js";
+import RouterRouter from "./index.js";
 
 /**
  * @param {string} url A URL string of the page under test.
