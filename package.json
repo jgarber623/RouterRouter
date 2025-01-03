@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/routerrouter",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "A very small JavaScript routing library extracted from Backbone’s Router.",
   "keywords": [
     "backbone",
@@ -20,7 +20,7 @@
   "directories": {
     "example": "example"
   },
-  "repository": "github:jgarber623/RouterRouter",
+  "repository": "https://github.com/jgarber623/RouterRouter",
   "scripts": {
     "start": "npx http-server .",
     "test": "NODE_V8_COVERAGE=coverage node --experimental-test-coverage --test"
@@ -32,6 +32,7 @@
     "node": ">=18.13"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }

@@ -23,13 +23,14 @@ jobs:
           cache: npm
           registry-url: https://registry.npmjs.org
       - run: npm ci
-      - run: npm publish --provenance
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   publish-to-github-packages:
     name: Publish to GitHub Packages
     permissions:
       contents: read
+      id-token: write
       packages: write
     needs: ci
     runs-on: ubuntu-latest
