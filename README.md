@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project has moved to [codeberg.org/jgarber/RouterRouter](https://codeberg.org/jgarber/RouterRouter).
+
 # RouterRouter
 
 **A very small JavaScript routing library extracted from [Backbone's Router](http://backbonejs.org/docs/backbone.html#section-185).**
